@@ -8,15 +8,16 @@ const signos = catalog.find((r) => r.title === "Signos")!;
 const elAmorEsReal = cefeida.tracks[4];
 const yorokobi = cefeida.tracks[5];
 
-// Frames 1 and 3 are real campaign photography from Danni's official 2026
-// media kit (see docs/content-sources.md). Everything else is verified
+// Frames 1 and 3 are real studio photography, sourced directly from the
+// artist's team (see docs/content-sources.md). Everything else is verified
 // Spotify cover art from her own artist page — no video auto-thumbnails.
 const frames = [
   {
-    src: "/photos/archive-grass-02.jpg",
-    alt: "Danni Moreno — fotografía de campaña, 2026",
+    src: "/photos/archive-studio-01.jpg",
+    alt: "Danni Moreno — fotografía de estudio, 2026",
     label: "ARCHIVO DM — CAMPAÑA 2026",
     span: "md:col-span-7 md:row-span-2 aspect-[4/5] md:aspect-auto",
+    objectPosition: "71% 42%",
   },
   {
     src: elAmorEsReal.cover,
@@ -25,10 +26,11 @@ const frames = [
     span: "md:col-span-5 aspect-square",
   },
   {
-    src: "/photos/archive-grass-01.jpg",
-    alt: "Danni Moreno — fotografía de campaña, 2026",
-    label: "ARCHIVO DM — CAMPAÑA 2026",
+    src: "/photos/archive-bathroom-01.jpg",
+    alt: "Danni Moreno — fotografía de estudio, 2026",
+    label: "ROLLO 03 — CAMPAÑA 2026",
     span: "md:col-span-5 aspect-[3/4]",
+    objectPosition: "50% 15%",
   },
   {
     src: yorokobi.cover,
@@ -82,6 +84,7 @@ export function VisualArchive() {
               alt={f.alt}
               label={f.label}
               className={f.span}
+              objectPosition={f.objectPosition}
             />
           ))}
         </div>

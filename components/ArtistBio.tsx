@@ -16,6 +16,7 @@ export function ArtistBio() {
             label="ARCHIVO DM — RETRATO"
             className="aspect-[4/5] w-full"
             sizes="(min-width: 768px) 40vw, 90vw"
+            objectPosition="54% 21%"
           />
         </div>
 

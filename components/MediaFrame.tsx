@@ -13,6 +13,7 @@ export function MediaFrame({
   priority = false,
   className = "",
   tintClassName,
+  objectPosition = "50% 50%",
 }: {
   src: string;
   alt: string;
@@ -22,6 +23,8 @@ export function MediaFrame({
   className?: string;
   /** Optional mix-blend-color wash so a reused image reads as a distinct moment. */
   tintClassName?: string;
+  /** CSS object-position, for keeping a face in frame on a tight aspect ratio. */
+  objectPosition?: string;
 }) {
   return (
     <figure className={`group relative overflow-hidden bg-cosmic-deep ${className}`}>
@@ -31,6 +34,7 @@ export function MediaFrame({
         fill
         sizes={sizes}
         priority={priority}
+        style={{ objectPosition }}
         className="object-cover contrast-[1.05] saturate-[1.15] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
       />
       {tintClassName && (

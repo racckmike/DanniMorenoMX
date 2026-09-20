@@ -55,12 +55,12 @@ export function HeroTransmission() {
         }}
       >
         <Image
-          src="/photos/hero-cdmx.jpg"
-          alt="Danni Moreno, Ciudad de México"
+          src="/photos/hero-studio.jpg"
+          alt="Danni Moreno"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[50%_25%] saturate-[1.1]"
+          className="object-cover object-[56%_20%] saturate-[1.1]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-void via-void/25 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-br from-magenta/15 via-transparent to-cobalt/20" />

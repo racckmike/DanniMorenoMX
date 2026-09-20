@@ -62,7 +62,7 @@ those.
 
 | File | Source | Verified | Notes |
 |---|---|---|---|
-| `hero-cdmx.jpg`, `portrait-about.jpg`, `archive-grass-01.jpg`, `archive-grass-02.jpg` | Extracted directly from the official 2026 media kit PDF, provided by the artist's team | 2026-09-20 | Real campaign photography, not cover art. `archive-grass-01.jpg`/`-02.jpg` are the same photoshoot used (cropped) for the official "Solamente tú <3" single cover, which is independent visual confirmation that the cover art genuinely depicts Danni. Source master files were ~1600×900–1344×756px as embedded in the PDF; if higher-resolution originals exist, they should replace these. |
+| `hero-studio.jpg`, `portrait-about.jpg`, `archive-studio-01.jpg`, `archive-bathroom-01.jpg` | Google Drive folder shared directly by the artist ("dannixbadrabbits" photoshoot), originals `IMG_3642.jpeg`, `DSC02646.jpeg`, `IMG_3639.jpeg`, `IMG_0282.jpeg` | 2026-09-20 | Real, high-resolution studio photography (2400×3600 native, shot on Sony ILCE-7M4 / Canon EOS Rebel T6, edited in Adobe Lightroom — confirmed via EXIF). These replaced an earlier, lower-resolution set (768×432–1600×900) that had been extracted from the official media kit PDF and looked visibly soft once on-site; the artist flagged the softness directly and provided this folder as the fix. Site copies are resized to 1800–2200px on the long edge and re-compressed for web delivery; originals are higher-resolution still if ever needed. |
 
 ## Live performances
 
