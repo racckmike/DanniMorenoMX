@@ -8,7 +8,6 @@ import Image from "next/image";
 export function MediaFrame({
   src,
   alt,
-  label,
   sizes = "(min-width: 1024px) 33vw, 90vw",
   priority = false,
   className = "",
@@ -17,7 +16,6 @@ export function MediaFrame({
 }: {
   src: string;
   alt: string;
-  label: string;
   sizes?: string;
   priority?: boolean;
   className?: string;
@@ -40,12 +38,6 @@ export function MediaFrame({
       {tintClassName && (
         <div aria-hidden className={`pointer-events-none absolute inset-0 mix-blend-color ${tintClassName}`} />
       )}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
-      <figcaption className="pointer-events-none absolute bottom-2 left-2 right-2 flex items-end justify-between">
-        <span className="system-label text-[10px] text-paper/80">
-          {label}
-        </span>
-      </figcaption>
     </figure>
   );
 }

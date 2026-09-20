@@ -82,7 +82,6 @@ export function VisualArchive() {
               key={`${f.label}-${i}`}
               src={f.src}
               alt={f.alt}
-              label={f.label}
               className={f.span}
               objectPosition={f.objectPosition}
             />
