@@ -12,6 +12,7 @@ export function MediaFrame({
   sizes = "(min-width: 1024px) 33vw, 90vw",
   priority = false,
   className = "",
+  tintClassName,
 }: {
   src: string;
   alt: string;
@@ -19,6 +20,8 @@ export function MediaFrame({
   sizes?: string;
   priority?: boolean;
   className?: string;
+  /** Optional mix-blend-color wash so a reused image reads as a distinct moment. */
+  tintClassName?: string;
 }) {
   return (
     <figure className={`group relative overflow-hidden bg-cosmic-deep ${className}`}>
@@ -28,8 +31,11 @@ export function MediaFrame({
         fill
         sizes={sizes}
         priority={priority}
-        className="object-cover grayscale-[0.15] contrast-[1.05] saturate-[0.92] transition-[transform,filter] duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0"
+        className="object-cover contrast-[1.05] saturate-[1.15] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
       />
+      {tintClassName && (
+        <div aria-hidden className={`pointer-events-none absolute inset-0 mix-blend-color ${tintClassName}`} />
+      )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
       <figcaption className="pointer-events-none absolute bottom-2 left-2 right-2 flex items-end justify-between">
         <span className="system-label text-[10px] text-paper/80">

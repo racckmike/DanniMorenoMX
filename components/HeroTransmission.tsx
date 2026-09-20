@@ -2,13 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { artist, cefeida } from "@/lib/data";
-import { usePrefersReducedMotion, useTimecode } from "@/lib/hooks";
+import { artist } from "@/lib/data";
+import { usePrefersReducedMotion } from "@/lib/hooks";
 import { RecDot, SystemText } from "./SystemText";
 
 export function HeroTransmission() {
   const reduced = usePrefersReducedMotion();
-  const timecode = useTimecode(reduced);
   const sectionRef = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
@@ -35,7 +34,7 @@ export function HeroTransmission() {
     const id = window.setInterval(() => {
       setGlitchTop(30 + Math.random() * 40);
       window.setTimeout(() => setGlitchTop(null), 140);
-    }, 7000);
+    }, 9000);
     return () => window.clearInterval(id);
   }, [reduced]);
 
@@ -56,34 +55,32 @@ export function HeroTransmission() {
         }}
       >
         <Image
-          src={cefeida.cover}
-          alt="Danni Moreno — CEFEIDA"
+          src="/photos/hero-cdmx.jpg"
+          alt="Danni Moreno, Ciudad de México"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[50%_20%] saturate-[0.95]"
+          className="object-cover object-[50%_25%] saturate-[1.1]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/30 to-void/10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-void/70 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-cosmic-deep/20 mix-blend-color" />
+        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/25 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-magenta/15 via-transparent to-cobalt/20" />
       </div>
 
       {glitchTop !== null && (
         <div
           aria-hidden
-          className="absolute inset-x-0 z-20 h-6 bg-paper/90"
+          className="absolute inset-x-0 z-20 h-4 bg-paper/80"
           style={{ top: `${glitchTop}%` }}
         />
       )}
 
-      {/* system readouts */}
+      {/* one compact system readout — supporting texture, not the subject */}
       <div
-        className="system-label pointer-events-none absolute left-5 top-20 flex flex-col gap-1.5 text-[11px] text-paper/85 md:left-8 md:top-24 md:text-xs"
+        className="system-label pointer-events-none absolute left-5 top-20 flex items-center gap-2 text-[11px] text-paper/85 md:left-8 md:top-24 md:text-xs"
         style={{ opacity: fade }}
       >
-        <RecDot />
-        <SystemText>CEFEIDA — TRANSMISSION 001</SystemText>
-        <SystemText>PLAY {timecode}</SystemText>
+        <RecDot label="GRABANDO" />
+        <SystemText>CEFEIDA</SystemText>
       </div>
       <div
         className="system-label pointer-events-none absolute right-5 top-20 text-right text-[11px] text-paper/85 md:right-8 md:top-24 md:text-xs"
@@ -112,21 +109,18 @@ export function HeroTransmission() {
         <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
           <a
             href="#cefeida"
-            className="system-label rounded-full bg-paper px-6 py-3 text-xs text-void transition-transform hover:scale-105"
-            data-cursor="PLAY"
+            className="system-label rounded-full bg-magenta px-6 py-3 text-xs text-paper transition-transform hover:scale-105"
           >
-            LISTEN
+            ESCUCHAR
           </a>
           <a
             href="#archive"
             className="system-label rounded-full border border-paper/50 px-6 py-3 text-xs text-paper transition-colors hover:border-paper"
           >
-            ENTER TRANSMISSION
+            VER TRANSMISIÓN
           </a>
         </div>
       </div>
-
-      <div className="crt-edge pointer-events-none absolute inset-0 z-30" />
     </section>
   );
 }

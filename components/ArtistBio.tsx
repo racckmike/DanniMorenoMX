@@ -1,4 +1,4 @@
-import { artist, cefeida } from "@/lib/data";
+import { artist } from "@/lib/data";
 import { MediaFrame } from "./MediaFrame";
 import { SystemText } from "./SystemText";
 
@@ -11,32 +11,33 @@ export function ArtistBio() {
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-12 md:gap-16">
         <div className="md:col-span-5">
           <MediaFrame
-            src={cefeida.cover}
-            alt="Danni Moreno — CEFEIDA"
-            label="DM ARCHIVE — PORTRAIT"
+            src="/photos/portrait-about.jpg"
+            alt="Danni Moreno — retrato"
+            label="ARCHIVO DM — RETRATO"
             className="aspect-[4/5] w-full"
             sizes="(min-width: 768px) 40vw, 90vw"
           />
         </div>
 
         <div className="flex flex-col justify-center md:col-span-7">
-          <SystemText className="mb-4 text-paper/50">ABOUT</SystemText>
+          <SystemText className="mb-4 text-paper/50">SOBRE DANNI</SystemText>
           <h2 className="font-display mb-6 text-[10vw] leading-[0.88] text-paper sm:text-[6vw] md:text-[4vw]">
             DANNI MORENO
           </h2>
           <p className="max-w-xl text-balance text-base leading-relaxed text-paper/75 md:text-lg">
-            Cantautora, productora y creadora audiovisual radicada en{" "}
-            {artist.city}. Escribe, produce y dirige su propio material bajo
-            su estudio independiente, DM Studios, moviéndose entre el pop
-            electrónico, el synth-pop y una estética visual propia que
-            mezcla lo análogo con lo cósmico. Su EP más
+            Cantautora, compositora y productora de {artist.city}, licenciada
+            en Producción Musical. Escribe, produce y hace dirección vocal de
+            su propio material —y el de otros artistas independientes—
+            desde su estudio, DM Studios, moviéndose entre el pop
+            electrónico, el synth-pop y una estética visual que mezcla lo
+            análogo con lo cósmico. Su EP más
             reciente, <em className="not-italic text-paper">CEFEIDA</em>, sale
             por Danni Moreno Music / Warner Music Group.
           </p>
 
           <dl className="system-label mt-10 grid grid-cols-2 gap-6 text-xs text-paper/50 sm:grid-cols-3">
             <div>
-              <dt className="text-paper/30">ROLE</dt>
+              <dt className="text-paper/30">ROL</dt>
               <dd className="mt-1 text-paper">{artist.roles.join(", ").toUpperCase()}</dd>
             </div>
             <div>
@@ -44,7 +45,7 @@ export function ArtistBio() {
               <dd className="mt-1 text-paper">{artist.city.toUpperCase()}</dd>
             </div>
             <div>
-              <dt className="text-paper/30">LABEL</dt>
+              <dt className="text-paper/30">SELLO</dt>
               <dd className="mt-1 text-paper">WARNER MUSIC GROUP</dd>
             </div>
           </dl>

@@ -30,6 +30,8 @@ export type Track = {
   duration: string;
   spotifyTrackUrl?: string;
   cover: string;
+  /** Duotone accent used on tracks that share the EP cover, so each still reads as distinct. */
+  accent: "signal" | "magenta" | "cobalt" | "violet";
 };
 
 // CEFEIDA — verified via Spotify (open.spotify.com/album/5tCbUJIL9OSrrKvT4HlB9G)
@@ -42,7 +44,7 @@ export const cefeida = {
   totalDuration: "17:30",
   spotifyUrl: "https://open.spotify.com/album/5tCbUJIL9OSrrKvT4HlB9G",
   cover:
-    "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a77b69c3afab20902a6764b0",
+    "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273a77b69c3afab20902a6764b0",
   credit: "℗ & © 2026 Danni Moreno Music / Warner Music Group",
   tracks: [
     {
@@ -51,7 +53,8 @@ export const cefeida = {
       duration: "1:03",
       spotifyTrackUrl: "https://open.spotify.com/track/4BeMHredaNspMX1GIc7zad",
       cover:
-        "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a77b69c3afab20902a6764b0",
+        "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273a77b69c3afab20902a6764b0",
+      accent: "violet",
     },
     {
       index: 2,
@@ -59,7 +62,8 @@ export const cefeida = {
       duration: "2:39",
       spotifyTrackUrl: "https://open.spotify.com/track/0iVjOO5WYVPMLbLKHLGQUi",
       cover:
-        "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02204995038f7d4cc2a069f1ef",
+        "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273204995038f7d4cc2a069f1ef",
+      accent: "signal",
     },
     {
       index: 3,
@@ -67,7 +71,8 @@ export const cefeida = {
       duration: "2:51",
       spotifyTrackUrl: "https://open.spotify.com/track/4w4IYfWl4xS9FwMriFKUeU",
       cover:
-        "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a77b69c3afab20902a6764b0",
+        "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273a77b69c3afab20902a6764b0",
+      accent: "magenta",
     },
     {
       index: 4,
@@ -75,7 +80,8 @@ export const cefeida = {
       duration: "3:09",
       spotifyTrackUrl: "https://open.spotify.com/track/5zqv5eYTFc1wy4uGsQnTGw",
       cover:
-        "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a77b69c3afab20902a6764b0",
+        "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273a77b69c3afab20902a6764b0",
+      accent: "cobalt",
     },
     {
       index: 5,
@@ -83,7 +89,8 @@ export const cefeida = {
       duration: "2:52",
       spotifyTrackUrl: "https://open.spotify.com/track/27FjcPhqRTjb312xz4SmGm",
       cover:
-        "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0212472ac60807518cd0d90411",
+        "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b27312472ac60807518cd0d90411",
+      accent: "violet",
     },
     {
       index: 6,
@@ -91,7 +98,8 @@ export const cefeida = {
       duration: "3:20",
       spotifyTrackUrl: "https://open.spotify.com/track/0jtWqvMladRmje21rb5Rdu",
       cover:
-        "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02131e86d43a7c045f7cde30cf",
+        "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273131e86d43a7c045f7cde30cf",
+      accent: "magenta",
     },
     {
       index: 7,
@@ -99,7 +107,8 @@ export const cefeida = {
       duration: "1:34",
       spotifyTrackUrl: "https://open.spotify.com/track/1UcJh9BihtkjNA8ftmeU1w",
       cover:
-        "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a77b69c3afab20902a6764b0",
+        "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273a77b69c3afab20902a6764b0",
+      accent: "signal",
     },
   ] satisfies Track[],
 };
@@ -125,7 +134,7 @@ export const catalog: Release[] = [
     year: 2023,
     date: "2023-10-06",
     cover:
-      "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d31f1b422d039e38466682ed",
+      "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273d31f1b422d039e38466682ed",
     spotifyUrl: "https://open.spotify.com/track/2bSqjf346Ux1viVQKISDFy",
   },
   {
@@ -135,7 +144,7 @@ export const catalog: Release[] = [
     year: 2024,
     date: "2024-02-22",
     cover:
-      "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02d0ad175711b1af44f7ac452e",
+      "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273d0ad175711b1af44f7ac452e",
     spotifyUrl: "https://open.spotify.com/album/7y025obHy6euEpAXMFto1l",
   },
   {
@@ -145,7 +154,7 @@ export const catalog: Release[] = [
     year: 2024,
     date: "2024-06-06",
     cover:
-      "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e028f1a632d4a13f01d077f0084",
+      "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b2738f1a632d4a13f01d077f0084",
     spotifyUrl: "https://open.spotify.com/album/4tt3mGyVlaUnKctUIzngC7",
   },
   {
@@ -155,7 +164,7 @@ export const catalog: Release[] = [
     year: 2024,
     date: "2024-07-17",
     cover:
-      "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f0c3767cfa6ae622a4fc71fa",
+      "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273f0c3767cfa6ae622a4fc71fa",
     spotifyUrl: "https://open.spotify.com/track/1PIyiDuNOEVNiRBDf91Pvw",
   },
   {
@@ -165,7 +174,7 @@ export const catalog: Release[] = [
     year: 2026,
     date: "2026-01-29",
     cover:
-      "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02a77b69c3afab20902a6764b0",
+      "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273a77b69c3afab20902a6764b0",
     spotifyUrl: "https://open.spotify.com/album/5tCbUJIL9OSrrKvT4HlB9G",
   },
   {
@@ -175,7 +184,7 @@ export const catalog: Release[] = [
     year: 2026,
     date: "2026-05-08",
     cover:
-      "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02605c837455ef3bfc124b2ced",
+      "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b273605c837455ef3bfc124b2ced",
     spotifyUrl: "https://open.spotify.com/album/42AJg6Hk66teFACorpkplq",
   },
   {
@@ -185,7 +194,7 @@ export const catalog: Release[] = [
     year: 2026,
     date: "2026-08-12",
     cover:
-      "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023a956d2210e6870815431eff",
+      "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b2733a956d2210e6870815431eff",
     spotifyUrl: "https://open.spotify.com/album/08MBTRromgYqKpbCMqdbqN",
   },
 ];
@@ -203,7 +212,7 @@ export const videos = {
     url: "https://www.youtube.com/watch?v=97llOrK9Sqg",
   },
   yorokobi: {
-    title: "Yorokobi 喌び (Video Oficial)",
+    title: "Yorokobi 喜び (Video Oficial)",
     youtubeId: "tfb8LgtuGDM",
     url: "https://www.youtube.com/watch?v=tfb8LgtuGDM",
   },
@@ -212,12 +221,31 @@ export const videos = {
 export const youtubeThumb = (id: string) =>
   `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
-// One verified past performance (Instagram, Aug 2025). No current upcoming
-// dates could be verified as of research date (Sept 2026), so this stays a
-// quiet archive entry rather than a promoted "Live" section.
-export const pastShow = {
-  title: "Una noche con Danni Moreno",
-  venue: "Queer House",
-  city: "Puebla, México",
-  date: "2025-08-21",
+export type PastShow = {
+  title: string;
+  venue: string;
+  city: string;
+  /** ISO date, or just a year ("2026") when the source didn't give an exact day. */
+  date: string;
+  dateIsYearOnly?: boolean;
 };
+
+// Verified past performances only — no upcoming dates could be confirmed as
+// of this research pass, so this stays a quiet archive rather than a
+// promoted "Live" section. Sources: Instagram highlights + the artist's own
+// 2026 media kit (see docs/content-sources.md).
+export const pastShows: PastShow[] = [
+  {
+    title: "Marcha del Orgullo LGBT+",
+    venue: "Ángel de la Independencia",
+    city: "Ciudad de México",
+    date: "2026",
+    dateIsYearOnly: true,
+  },
+  {
+    title: "Una noche con Danni Moreno",
+    venue: "Queer House",
+    city: "Puebla, México",
+    date: "2025-08-21",
+  },
+];

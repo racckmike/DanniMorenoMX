@@ -64,7 +64,7 @@ export function FinalTransmission() {
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="system-label text-xs text-paper/70 transition-colors hover:text-signal"
+              className="system-label text-xs text-paper/70 transition-colors hover:text-magenta"
             >
               {l.label}
             </a>
@@ -72,8 +72,8 @@ export function FinalTransmission() {
         </nav>
 
         <div className="mt-16 flex flex-col items-center gap-2">
-          <SystemText className="text-paper/40">TRANSMISSION ENDED</SystemText>
-          <SystemText className="text-paper/40">STOP {"■"}</SystemText>
+          <SystemText className="text-paper/40">FIN DE LA TRANSMISIÓN</SystemText>
+          <SystemText className="text-paper/40">DETENER {"■"}</SystemText>
         </div>
       </div>
     </section>

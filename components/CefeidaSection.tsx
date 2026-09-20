@@ -5,6 +5,20 @@ import Image from "next/image";
 import { cefeida } from "@/lib/data";
 import { SystemText, RecDot } from "./SystemText";
 
+const ACCENT_BG: Record<string, string> = {
+  signal: "bg-signal/25",
+  magenta: "bg-magenta/25",
+  cobalt: "bg-cobalt/30",
+  violet: "bg-violet/35",
+};
+
+const ACCENT_TEXT: Record<string, string> = {
+  signal: "text-signal",
+  magenta: "text-magenta",
+  cobalt: "text-cobalt",
+  violet: "text-[#b98bff]",
+};
+
 export function CefeidaSection() {
   const [active, setActive] = useState(0);
   const track = cefeida.tracks[active];
@@ -16,9 +30,10 @@ export function CefeidaSection() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-40 transition-[background-image] duration-500"
+        className="pointer-events-none absolute inset-0 opacity-60"
         style={{
-          backgroundImage: `radial-gradient(ellipse at 80% 10%, var(--color-cosmic) 0%, transparent 60%)`,
+          backgroundImage:
+            "radial-gradient(ellipse at 80% 0%, var(--color-magenta) 0%, transparent 55%), radial-gradient(ellipse at 0% 100%, var(--color-cobalt) 0%, transparent 55%)",
         }}
       />
 
@@ -35,9 +50,8 @@ export function CefeidaSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="system-label rounded-full border border-paper/40 px-5 py-2.5 text-xs text-paper transition-colors hover:border-paper"
-            data-cursor="PLAY"
           >
-            LISTEN ON SPOTIFY ↗
+            ESCUCHAR EN SPOTIFY ↗
           </a>
         </div>
 
@@ -51,9 +65,8 @@ export function CefeidaSection() {
                     onMouseEnter={() => setActive(i)}
                     onFocus={() => setActive(i)}
                     onClick={() => setActive(i)}
-                    data-cursor="PLAY"
                     className={`group flex w-full items-center gap-4 py-4 text-left transition-colors md:py-5 ${
-                      active === i ? "text-signal" : "text-paper hover:text-paper/70"
+                      active === i ? ACCENT_TEXT[t.accent] : "text-paper hover:text-paper/70"
                     }`}
                   >
                     <span className="system-label w-8 shrink-0 text-xs text-paper/40">
@@ -86,7 +99,6 @@ export function CefeidaSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative block aspect-square w-full overflow-hidden"
-                data-cursor="PLAY"
               >
                 <Image
                   key={track.title}
@@ -96,10 +108,14 @@ export function CefeidaSection() {
                   sizes="(min-width: 768px) 40vw, 90vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                <div
+                  aria-hidden
+                  className={`absolute inset-0 mix-blend-color ${ACCENT_BG[track.accent]}`}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                   <SystemText className="text-paper">
-                    TRACK {String(track.index).padStart(2, "0")} / 07
+                    PISTA {String(track.index).padStart(2, "0")} / 07
                   </SystemText>
                   <SystemText className="text-paper">{track.duration}</SystemText>
                 </div>

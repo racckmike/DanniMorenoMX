@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --color-void: #080808;
-  --color-signal: #ff2a20;
-  --color-paper: #e9e5da;
-  --color-cosmic: #1c2b6b;
-  --color-cosmic-deep: #0e1638;
-  --color-wine: #4a1030;
-  --color-aberration-cyan: #29f3ff;
-  --color-aberration-magenta: #ff2ad4;
+  /* Core pop palette — derived from Danni's verified CEFEIDA/Pecar artwork:
+     warm cream, near-black, a confident signal red, and three large-moment
+     accents (cobalt, magenta, violet) instead of a monochrome terminal look. */
+  --color-void: #0b0b14;
+  --color-paper: #f7efe0;
+  --color-signal: #ff3d2e;
+  --color-cobalt: #2138e0;
+  --color-magenta: #ff2f96;
+  --color-violet: #5a1fb8;
+  --color-chrome: #d9dce6;
+  --color-cosmic-deep: #150b2e;
 
   --font-display: var(--font-anton), "Arial Narrow", sans-serif;
   --font-info: var(--font-inter), system-ui, sans-serif;
@@ -17,22 +20,20 @@
 
 @theme inline {
   --color-void: var(--color-void);
-  --color-signal: var(--color-signal);
   --color-paper: var(--color-paper);
-  --color-cosmic: var(--color-cosmic);
+  --color-signal: var(--color-signal);
+  --color-cobalt: var(--color-cobalt);
+  --color-magenta: var(--color-magenta);
+  --color-violet: var(--color-violet);
+  --color-chrome: var(--color-chrome);
   --color-cosmic-deep: var(--color-cosmic-deep);
-  --color-wine: var(--color-wine);
-  --color-aberration-cyan: var(--color-aberration-cyan);
-  --color-aberration-magenta: var(--color-aberration-magenta);
 
   --font-display: var(--font-display);
   --font-info: var(--font-info);
   --font-system: var(--font-system);
 
   --animate-blink: blink 1.6s step-end infinite;
-  --animate-scan: scan 9s linear infinite;
   --animate-flicker: flicker 6s linear infinite;
-  --animate-marquee: marquee 26s linear infinite;
 }
 
 * {
@@ -52,11 +53,11 @@ body {
 }
 
 ::selection {
-  background: var(--color-signal);
-  color: var(--color-void);
+  background: var(--color-magenta);
+  color: var(--color-paper);
 }
 
-/* ---------- Broadcast texture layers ---------- */
+/* ---------- Analog texture — kept as a faint unifying grain only, never the subject ---------- */
 
 .grain::before {
   content: "";
@@ -64,29 +65,9 @@ body {
   inset: 0;
   z-index: 90;
   pointer-events: none;
-  opacity: 0.045;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 160px 160px;
-}
-
-.scanlines::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 91;
-  pointer-events: none;
-  opacity: 0.06;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(233, 229, 218, 0.6) 0px,
-    rgba(233, 229, 218, 0.6) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-}
-
-.crt-edge {
-  box-shadow: inset 0 0 18vmin rgba(0, 0, 0, 0.55);
 }
 
 .text-aberrate {
@@ -101,15 +82,15 @@ body {
 }
 
 .aberrate-on .text-aberrate::before {
-  color: var(--color-aberration-cyan);
+  color: var(--color-cobalt);
   transform: translate(-2px, 0.5px);
-  opacity: 0.7;
+  opacity: 0.55;
   mix-blend-mode: screen;
 }
 .aberrate-on .text-aberrate::after {
-  color: var(--color-aberration-magenta);
+  color: var(--color-magenta);
   transform: translate(2px, -0.5px);
-  opacity: 0.7;
+  opacity: 0.55;
   mix-blend-mode: screen;
 }
 
@@ -118,21 +99,11 @@ body {
   46%, 100% { opacity: 0.15; }
 }
 
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
 @keyframes flicker {
   0%, 96%, 100% { opacity: 1; }
   97% { opacity: 0.86; }
   98% { opacity: 1; }
   99% { opacity: 0.92; }
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
 }
 
 .system-label {
