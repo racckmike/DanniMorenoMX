@@ -18,6 +18,9 @@ export function ArtistStatement() {
         </div>
 
         <div className="md:col-span-8">
+          <SystemText className="mb-3 block text-paper/60 md:mb-4">
+            ¿QUIÉN ES DANNI MORENO?
+          </SystemText>
           <h2 className="font-display text-[11vw] leading-[0.92] text-paper sm:text-[8vw] md:text-[6.5vw] lg:text-[5.2vw]">
             SU PROPIO
             <br />
