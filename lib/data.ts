@@ -22,6 +22,15 @@ export const artist = {
   city: "Ciudad de México",
   roles: ["Cantautora", "Productora", "Creadora audiovisual"],
   label: "Danni Moreno Music / Warner Music Group",
+  degree: "Licenciada en Producción Musical",
+  studioNote:
+    "Compone y produce su propia música, realiza producción vocal y trabaja con otros artistas independientes desde su propio home studio.",
+  // Provided directly by the artist's team (see docs/content-sources.md).
+  // These are point-in-time figures, not live data — refresh periodically.
+  stats: {
+    streamsOnOneSong: "+1M",
+    monthlyListeners: "+12K",
+  },
 };
 
 export type Track = {
@@ -222,18 +231,21 @@ export const youtubeThumb = (id: string) =>
   `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
 export type PastShow = {
-  title: string;
-  venue: string;
-  city: string;
+  title?: string;
+  venue?: string;
+  city?: string;
   /** ISO date, or just a year ("2026") when the source didn't give an exact day. */
-  date: string;
+  date?: string;
   dateIsYearOnly?: boolean;
 };
 
 // Verified past performances only — no upcoming dates could be confirmed as
 // of this research pass, so this stays a quiet archive rather than a
-// promoted "Live" section. Sources: Instagram highlights + the artist's own
-// 2026 media kit (see docs/content-sources.md).
+// promoted "Live" section. Sources: Instagram highlights, the artist's own
+// 2026 media kit, and direct messages from the artist's team (see
+// docs/content-sources.md). Some entries below are intentionally partial —
+// venue, city and/or date were not given yet. Do not fill gaps with a guess;
+// wait for confirmation and update the entry then.
 export const pastShows: PastShow[] = [
   {
     title: "Marcha del Orgullo LGBT+",
@@ -247,5 +259,17 @@ export const pastShows: PastShow[] = [
     venue: "Queer House",
     city: "Puebla, México",
     date: "2025-08-21",
+  },
+  {
+    // Venue and date not yet provided — only the city is confirmed.
+    city: "Madrid, España",
+  },
+  {
+    // Venue and date not yet provided — only the city is confirmed.
+    city: "Bogotá, Colombia",
+  },
+  {
+    // City and date not yet provided — only the venue name is confirmed.
+    venue: "Foro del Tejedor",
   },
 ];

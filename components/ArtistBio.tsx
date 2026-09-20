@@ -25,16 +25,31 @@ export function ArtistBio() {
           <h2 className="font-display mb-6 text-[10vw] leading-[0.88] text-paper sm:text-[6vw] md:text-[4vw]">
             DANNI MORENO
           </h2>
-          <p className="max-w-xl text-balance text-base leading-relaxed text-paper/75 md:text-lg">
-            Cantautora, compositora y productora de {artist.city}, licenciada
-            en Producción Musical. Escribe, produce y hace dirección vocal de
-            su propio material —y el de otros artistas independientes—
-            desde su estudio, DM Studios, moviéndose entre el pop
-            electrónico, el synth-pop y una estética visual que mezcla lo
-            análogo con lo cósmico. Su EP más
-            reciente, <em className="not-italic text-paper">CEFEIDA</em>, sale
-            por Danni Moreno Music / Warner Music Group.
-          </p>
+
+          <div className="flex max-w-xl flex-col gap-5 text-balance text-base leading-relaxed text-paper/75 md:text-lg">
+            <p>
+              Danni Moreno es artista, compositora y productora musical de{" "}
+              {artist.city}, {artist.degree.toLowerCase()}. Su proyecto se
+              desarrolla dentro del pop, combinando una identidad fresca y
+              cercana con sonidos bailables, influencias disco y referencias
+              de los 80 y los 2000.
+            </p>
+            <p>
+              {artist.studioNote} También ha participado en la creación de
+              música para marcas, campañas políticas y comerciales, y una
+              canción original suya fue transmitida por Televisa durante la
+              temporada navideña.
+            </p>
+            <p>
+              Actualmente se encuentra en una nueva etapa artística, con
+              canciones como <em className="not-italic text-paper">Yorokobi</em>{" "}
+              y <em className="not-italic text-paper">Pecar</em> como parte
+              de esta evolución. Después de años de desarrollarse detrás y
+              frente al micrófono, construye una carrera independiente en la
+              que composición, producción e interpretación convergen para
+              darle forma a una identidad propia.
+            </p>
+          </div>
 
           <dl className="system-label mt-10 grid grid-cols-2 gap-6 text-xs text-paper/50 sm:grid-cols-3">
             <div>
@@ -48,6 +63,14 @@ export function ArtistBio() {
             <div>
               <dt className="text-paper/30">SELLO</dt>
               <dd className="mt-1 text-paper">WARNER MUSIC GROUP</dd>
+            </div>
+            <div>
+              <dt className="text-paper/30">REPRODUCCIONES</dt>
+              <dd className="mt-1 text-paper">{artist.stats.streamsOnOneSong} EN UNA CANCIÓN</dd>
+            </div>
+            <div>
+              <dt className="text-paper/30">OYENTES</dt>
+              <dd className="mt-1 text-paper">{artist.stats.monthlyListeners} MENSUALES · SPOTIFY</dd>
             </div>
           </dl>
         </div>
