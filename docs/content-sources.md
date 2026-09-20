@@ -20,7 +20,7 @@ those.
 | Instagram handle @dannimorenomx, bio "Productora, compositora y cantante. México. Escucha mi música. @dmstudiosmx", ~10.3K followers | Official Instagram profile | https://www.instagram.com/dannimorenomx/ | 2026-09-20 | Follower count NOT displayed on site (volatile) |
 | Spotify artist page, "cantautora y productora mexicana" | Official Spotify artist page | https://open.spotify.com/artist/7jbMO8GaINf90FkmWvzUAN | 2026-09-20 | Monthly listener count NOT displayed on site (volatile) |
 | YouTube channel @DanniMorenoMX | Official YouTube channel | https://www.youtube.com/@DanniMorenoMX | 2026-09-14 (original research) | |
-| TikTok @itsdannimoreno | Official TikTok profile | https://www.tiktok.com/@itsdannimoreno | 2026-09-14 (original research) | |
+| TikTok @dannimorenomx | Official TikTok profile | https://www.tiktok.com/@dannimorenomx | 2026-09-20 | Corrected in this pass — an earlier handle (@itsdannimoreno) was wrong; corrected directly by the artist's team and re-verified (200 OK) before shipping |
 | Apple Music artist page | Official Apple Music page | https://music.apple.com/us/artist/danni-moreno/1433651209 | 2026-09-14 (original research) | |
 | Facebook page DanniMorenoMX | Official Facebook page | https://www.facebook.com/DanniMorenoMX/ | 2026-09-14 (original research) | Verified but not linked on site currently |
 | Base: Ciudad de México | Instagram bio ("México 📍") + Spotify bio | as above | 2026-09-20 | Country/city-level only; no more specific claim made |

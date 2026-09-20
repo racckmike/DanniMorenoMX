@@ -22,15 +22,22 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Danni Moreno — CEFEIDA",
+  metadataBase: new URL("https://www.dannimoreno.com"),
+  title: "Danni Moreno",
   description:
     "Danni Moreno: cantautora, productora y creadora audiovisual de Ciudad de México. Escucha CEFEIDA, disponible ahora.",
   openGraph: {
-    title: "Danni Moreno — CEFEIDA",
+    title: "Danni Moreno",
     description:
       "Cantautora, productora y creadora audiovisual de Ciudad de México. Escucha CEFEIDA, disponible ahora.",
     type: "website",
     locale: "es_MX",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Danni Moreno",
+    description:
+      "Cantautora, productora y creadora audiovisual de Ciudad de México. Escucha CEFEIDA, disponible ahora.",
   },
 };
 

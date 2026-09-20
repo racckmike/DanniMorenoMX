@@ -14,7 +14,7 @@ export const artist = {
   name: "Danni Moreno",
   handle: "@dannimorenomx",
   instagram: "https://www.instagram.com/dannimorenomx/",
-  tiktok: "https://www.tiktok.com/@itsdannimoreno",
+  tiktok: "https://www.tiktok.com/@dannimorenomx",
   youtube: "https://www.youtube.com/@DanniMorenoMX",
   spotify: "https://open.spotify.com/artist/7jbMO8GaINf90FkmWvzUAN",
   appleMusic: "https://music.apple.com/us/artist/danni-moreno/1433651209",
