@@ -1,5 +1,4 @@
 import { HeroTransmission } from "@/components/HeroTransmission";
-import { ArtistStatement } from "@/components/ArtistStatement";
 import { LiveArchive } from "@/components/LiveArchive";
 import { CefeidaSection } from "@/components/CefeidaSection";
 import { FeaturedTransmission } from "@/components/FeaturedTransmission";
@@ -12,7 +11,6 @@ export default function Home() {
   return (
     <main>
       <HeroTransmission />
-      <ArtistStatement />
       <ArtistBio />
       <LiveArchive />
       <CefeidaSection />
