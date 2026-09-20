@@ -13,12 +13,12 @@ export default function Home() {
     <main>
       <HeroTransmission />
       <ArtistStatement />
+      <ArtistBio />
       <LiveArchive />
       <CefeidaSection />
       <FeaturedTransmission />
       <VisualArchive />
       <MusicArchive />
-      <ArtistBio />
       <FinalTransmission />
     </main>
   );
