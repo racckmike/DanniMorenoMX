@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { artist } from "@/lib/data";
 import { usePrefersReducedMotion } from "@/lib/hooks";
-import { RecDot, SystemText } from "./SystemText";
+import { RecDot } from "./SystemText";
 
 export function HeroTransmission() {
   const reduced = usePrefersReducedMotion();
-  const sectionRef = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
   const [glitchTop, setGlitchTop] = useState<number | null>(null);
@@ -44,16 +43,17 @@ export function HeroTransmission() {
   return (
     <section
       id="top"
-      ref={sectionRef}
       className="relative flex h-[100svh] min-h-[560px] w-full items-end overflow-hidden bg-cosmic-deep"
     >
-      <div
-        className="absolute inset-0"
-        style={{
-          transform: `scale(${scale}) translate(${offset.x}px, ${offset.y}px)`,
-          transition: "transform 0.2s ease-out",
-        }}
-      >
+      {/*
+        The parallax transform lives on the <img> itself, not on a wrapping
+        div. Next/Image's `fill` mode makes the img position:absolute;inset:0
+        against the nearest positioned ancestor — putting the transform on
+        that ancestor instead (as a previous version did) caused the image
+        to fail to composite in production. Transforming the img directly
+        avoids touching its own containing-block chain entirely.
+      */}
+      <div className="absolute inset-0">
         <Image
           src="/photos/hero-studio.jpg"
           alt="Danni Moreno"
@@ -61,6 +61,14 @@ export function HeroTransmission() {
           priority
           sizes="100vw"
           className="object-cover object-[56%_20%] saturate-[1.1]"
+          style={
+            reduced
+              ? undefined
+              : {
+                  transform: `scale(${scale}) translate(${offset.x}px, ${offset.y}px)`,
+                  transition: "transform 0.2s ease-out",
+                }
+          }
         />
         <div className="absolute inset-0 bg-gradient-to-t from-void via-void/25 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-br from-magenta/15 via-transparent to-cobalt/20" />
@@ -74,22 +82,16 @@ export function HeroTransmission() {
         />
       )}
 
-      {/* one compact system readout — supporting texture, not the subject */}
+      {/* atmospheric texture — small, muted, clearly secondary to the name below */}
       <div
-        className="system-label pointer-events-none absolute left-5 top-20 flex items-center gap-2 text-[11px] text-paper/85 md:left-8 md:top-24 md:text-xs"
+        className="system-label pointer-events-none absolute left-5 top-20 flex items-center gap-2 text-[10px] text-paper/45 md:left-8 md:top-24"
         style={{ opacity: fade }}
       >
-        <RecDot label="GRABANDO" />
-        <SystemText>SU PRÓXIMO LANZAMIENTO</SystemText>
-      </div>
-      <div
-        className="system-label pointer-events-none absolute right-5 top-20 text-right text-[11px] text-paper/85 md:right-8 md:top-24 md:text-xs"
-        style={{ opacity: fade }}
-      >
-        <SystemText>{artist.city.toUpperCase()}</SystemText>
+        <RecDot label="GRABANDO SU PRÓXIMO LANZAMIENTO" />
+        <span>— {artist.city.toUpperCase()}</span>
       </div>
 
-      {/* huge wordmark */}
+      {/* artist identity — the actual subject of the hero */}
       <div
         className="relative z-10 w-full px-4 pb-28 md:px-8 md:pb-32"
         style={{ opacity: fade }}

@@ -1,5 +1,5 @@
+import Image from "next/image";
 import { artist } from "@/lib/data";
-import { MediaFrame } from "./MediaFrame";
 import { SystemText } from "./SystemText";
 
 export function ArtistBio() {
@@ -9,14 +9,14 @@ export function ArtistBio() {
       className="relative border-t border-paper/10 bg-void px-5 py-24 md:px-8 md:py-36"
     >
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-12 md:gap-16">
-        <div className="md:col-span-5">
-          <MediaFrame
+        <div className="relative aspect-[4/5] w-full overflow-hidden md:col-span-5">
+          <Image
             src="/photos/portrait-about.jpg"
-            alt="Danni Moreno — retrato"
-            label="ARCHIVO DM — RETRATO"
-            className="aspect-[4/5] w-full"
+            alt="Danni Moreno"
+            fill
             sizes="(min-width: 768px) 40vw, 90vw"
-            objectPosition="54% 21%"
+            className="object-cover"
+            style={{ objectPosition: "54% 21%" }}
           />
         </div>
 

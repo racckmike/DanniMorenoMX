@@ -40,11 +40,7 @@ export function CefeidaSection() {
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-4 md:mb-16">
           <div>
-            <div className="flex items-center gap-2">
-              <Image src="/graphics/sparkle.png" alt="" aria-hidden width={16} height={16} className="opacity-90" />
-              <SystemText className="text-signal">{cefeida.type} — {cefeida.year}</SystemText>
-              <Image src="/graphics/sparkle.png" alt="" aria-hidden width={16} height={16} className="opacity-90" />
-            </div>
+            <SystemText className="text-signal">{cefeida.type} — {cefeida.year}</SystemText>
             <h2 className="mt-2 font-display text-[16vw] leading-[0.85] text-paper sm:text-[10vw] md:text-[7vw]">
               CEFEIDA
             </h2>
