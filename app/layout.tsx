@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.dannimoreno.com"),
   title: "Danni Moreno",
   description:
-    "Danni Moreno: cantautora, productora y creadora audiovisual de Ciudad de México. Escucha CEFEIDA, disponible ahora.",
+    "Danni Moreno: artista, compositora y productora musical de Ciudad de México. Escucha CEFEIDA, disponible ahora.",
   openGraph: {
     title: "Danni Moreno",
     description:
-      "Cantautora, productora y creadora audiovisual de Ciudad de México. Escucha CEFEIDA, disponible ahora.",
+      "Artista, compositora y productora musical de Ciudad de México. Escucha CEFEIDA, disponible ahora.",
     type: "website",
     locale: "es_MX",
   },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Danni Moreno",
     description:
-      "Cantautora, productora y creadora audiovisual de Ciudad de México. Escucha CEFEIDA, disponible ahora.",
+      "Artista, compositora y productora musical de Ciudad de México. Escucha CEFEIDA, disponible ahora.",
   },
 };
 

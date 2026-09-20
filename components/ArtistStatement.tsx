@@ -22,14 +22,15 @@ export function ArtistStatement() {
             ¿QUIÉN ES DANNI MORENO?
           </SystemText>
           <h2 className="font-display text-[11vw] leading-[0.92] text-paper sm:text-[8vw] md:text-[6.5vw] lg:text-[5.2vw]">
-            SU PROPIO
+            IDENTIDAD
             <br />
-            UNIVERSO.
+            FRESCA Y CERCANA.
           </h2>
           <p className="mt-8 max-w-xl text-balance font-info text-base leading-relaxed text-paper/80 md:text-lg">
-            Danni Moreno es cantautora, productora y creadora audiovisual de{" "}
-            {artist.city}. Su música se mueve entre el pop electrónico, el
-            synth-pop y una estética que mezcla lo análogo con lo cósmico.
+            Danni Moreno es artista, compositora y productora musical de{" "}
+            {artist.city}. Su proyecto se desarrolla dentro del pop,
+            combinando una identidad fresca y cercana con sonidos bailables,
+            influencias disco y referencias de los 80 y los 2000.
           </p>
         </div>
       </div>

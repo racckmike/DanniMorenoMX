@@ -35,19 +35,43 @@ export function ArtistBio() {
               de los 80 y los 2000.
             </p>
             <p>
-              {artist.studioNote} También ha participado en la creación de
-              música para marcas, campañas políticas y comerciales, y una
-              canción original suya fue transmitida por Televisa durante la
-              temporada navideña.
+              Su formación como productora le ha permitido desarrollar una
+              visión integral de la música: compone y produce sus propias
+              canciones, realiza producción vocal y trabaja también con otros
+              artistas independientes en procesos de composición y producción
+              desde su propio home studio. A lo largo de su trayectoria
+              también ha participado en la creación de música para distintos
+              proyectos, incluyendo jingles para marcas, campañas políticas y
+              comerciales.
+            </p>
+            <p>
+              Como artista, Danni ha logrado conectar con una audiencia
+              digital, alcanzando más de un millón de reproducciones con una
+              de sus canciones y construyendo una comunidad que hoy busca
+              llevar hacia una nueva etapa de su proyecto artístico.
+              Actualmente cuenta con más de 12 mil oyentes mensuales en
+              Spotify. Su música también ha llegado a la televisión mexicana:
+              una canción original que realizó junto a un amigo fue
+              transmitida por Televisa durante la temporada navideña.
             </p>
             <p>
               Actualmente se encuentra en una nueva etapa artística, con
               canciones como <em className="not-italic text-paper">Yorokobi</em>{" "}
-              y <em className="not-italic text-paper">Pecar</em> como parte
-              de esta evolución. Después de años de desarrollarse detrás y
-              frente al micrófono, construye una carrera independiente en la
-              que composición, producción e interpretación convergen para
-              darle forma a una identidad propia.
+              y <em className="not-italic text-paper">Pecar</em> como parte de
+              esta evolución. Próximamente continuará lanzando música que
+              explora distintas sonoridades dentro del pop, desde lo
+              electrónico y disco hasta influencias que recorren distintas
+              épocas, de los 70 a los 2000, reinterpretadas desde una
+              perspectiva actual.
+            </p>
+            <p>
+              Después de años de desarrollarse detrás y frente al micrófono,
+              Danni continúa construyendo una carrera independiente en la que
+              la composición, la producción y la interpretación convergen
+              para darle forma a una identidad propia. Hoy busca llevar su
+              música a nuevos públicos, abrirse camino en la industria y
+              seguir convirtiendo todo lo que ha construido en nuevas
+              oportunidades para crecer y llegar cada vez más lejos.
             </p>
           </div>
 

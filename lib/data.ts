@@ -20,11 +20,11 @@ export const artist = {
   appleMusic: "https://music.apple.com/us/artist/danni-moreno/1433651209",
   facebook: "https://www.facebook.com/DanniMorenoMX/",
   city: "Ciudad de México",
-  roles: ["Cantautora", "Productora", "Creadora audiovisual"],
+  // Exact self-description from the artist's own bio text — do not
+  // paraphrase or add roles (e.g. "creadora audiovisual") she hasn't used.
+  roles: ["Artista", "Compositora", "Productora musical"],
   label: "Danni Moreno Music / Warner Music Group",
   degree: "Licenciada en Producción Musical",
-  studioNote:
-    "Compone y produce su propia música, realiza producción vocal y trabaja con otros artistas independientes desde su propio home studio.",
   // Provided directly by the artist's team (see docs/content-sources.md).
   // These are point-in-time figures, not live data — refresh periodically.
   stats: {
