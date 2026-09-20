@@ -261,15 +261,29 @@ export const pastShows: PastShow[] = [
     date: "2025-08-21",
   },
   {
-    // Venue and date not yet provided — only the city is confirmed.
+    // Venue name not yet provided — city and year are confirmed.
     city: "Madrid, España",
+    date: "2023",
+    dateIsYearOnly: true,
   },
   {
-    // Venue and date not yet provided — only the city is confirmed.
+    // Venue name not yet provided — city and year are confirmed.
     city: "Bogotá, Colombia",
+    date: "2022",
+    dateIsYearOnly: true,
   },
   {
-    // City and date not yet provided — only the venue name is confirmed.
+    // City not yet provided — venue, "sold out," and year are confirmed.
+    // Played twice (2023 and 2024), so it's listed as two entries.
     venue: "Foro del Tejedor",
+    title: "Sold out",
+    date: "2023",
+    dateIsYearOnly: true,
+  },
+  {
+    venue: "Foro del Tejedor",
+    title: "Sold out",
+    date: "2024",
+    dateIsYearOnly: true,
   },
 ];
