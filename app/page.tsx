@@ -1,11 +1,11 @@
 import { HeroTransmission } from "@/components/HeroTransmission";
 import { ArtistStatement } from "@/components/ArtistStatement";
+import { LiveArchive } from "@/components/LiveArchive";
 import { CefeidaSection } from "@/components/CefeidaSection";
 import { FeaturedTransmission } from "@/components/FeaturedTransmission";
 import { VisualArchive } from "@/components/VisualArchive";
 import { MusicArchive } from "@/components/MusicArchive";
 import { ArtistBio } from "@/components/ArtistBio";
-import { LiveArchive } from "@/components/LiveArchive";
 import { FinalTransmission } from "@/components/FinalTransmission";
 
 export default function Home() {
@@ -13,12 +13,12 @@ export default function Home() {
     <main>
       <HeroTransmission />
       <ArtistStatement />
+      <LiveArchive />
       <CefeidaSection />
       <FeaturedTransmission />
       <VisualArchive />
       <MusicArchive />
       <ArtistBio />
-      <LiveArchive />
       <FinalTransmission />
     </main>
   );
