@@ -106,6 +106,10 @@ export function HeroTransmission() {
           </span>
         </h1>
 
+        <p className="mt-4 max-w-xl text-balance font-info text-base text-paper/90 md:mt-5 md:text-xl">
+          {artist.roles.join(" · ")} de {artist.city}.
+        </p>
+
         <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
           <a
             href="#cefeida"
