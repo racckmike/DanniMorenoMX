@@ -80,7 +80,7 @@ export function HeroTransmission() {
         style={{ opacity: fade }}
       >
         <RecDot label="GRABANDO" />
-        <SystemText>CEFEIDA</SystemText>
+        <SystemText>SU PRÓXIMO LANZAMIENTO</SystemText>
       </div>
       <div
         className="system-label pointer-events-none absolute right-5 top-20 text-right text-[11px] text-paper/85 md:right-8 md:top-24 md:text-xs"
@@ -106,7 +106,7 @@ export function HeroTransmission() {
           </span>
         </h1>
 
-        <p className="mt-4 max-w-xl text-balance font-info text-base text-paper/90 md:mt-5 md:text-xl">
+        <p className="mt-4 max-w-xl text-balance font-info text-lg font-medium text-paper md:mt-5 md:text-2xl">
           {artist.roles.join(" · ")} de {artist.city}.
         </p>
 
