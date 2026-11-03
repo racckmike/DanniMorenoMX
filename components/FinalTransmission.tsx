@@ -39,19 +39,21 @@ export function FinalTransmission() {
     <section
       id="transmission"
       ref={ref}
-      className="relative flex min-h-[90svh] flex-col items-center justify-center gap-12 overflow-hidden bg-gradient-to-b from-void via-cosmic-deep to-violet px-5 py-24 text-center md:px-8"
+      className="scanlines relative flex min-h-[90svh] flex-col items-center justify-center gap-12 overflow-hidden bg-gradient-to-b from-void via-cosmic-deep to-violet px-5 py-24 text-center md:px-8"
     >
+      <div aria-hidden className="neon-grid" />
+
       <div
         aria-hidden
-        className="h-px bg-paper transition-all duration-700 ease-out"
+        className="relative h-px bg-paper transition-all duration-700 ease-out"
         style={{ width: revealed ? "100%" : "0%", maxWidth: "560px" }}
       />
 
       <div
-        className="transition-opacity duration-700"
+        className="relative transition-opacity duration-700"
         style={{ opacity: revealed ? 1 : 0, transitionDelay: revealed ? "300ms" : "0ms" }}
       >
-        <h2 className="font-display text-[20vw] leading-[0.82] text-paper sm:text-[13vw] md:text-[9vw]">
+        <h2 className="chrome-text font-display text-[20vw] leading-[0.82] text-paper sm:text-[13vw] md:text-[9vw]">
           DANNI
           <br />
           MORENO

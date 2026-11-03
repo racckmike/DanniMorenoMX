@@ -11,10 +11,12 @@ const ROW_HOVER = ["hover:bg-signal/10", "hover:bg-magenta/10", "hover:bg-cobalt
 
 export function MusicArchive() {
   return (
-    <section className="relative bg-void px-5 py-24 md:px-8 md:py-36">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative overflow-hidden bg-void px-5 py-24 md:px-8 md:py-36">
+      <div aria-hidden className="neon-grid" />
+
+      <div className="relative mx-auto max-w-6xl">
         <div className="mb-10 flex items-end justify-between md:mb-14">
-          <h2 className="font-display text-[13vw] leading-[0.85] text-paper sm:text-[8vw] md:text-[5.5vw]">
+          <h2 className="neon-text font-display text-[13vw] leading-[0.85] text-paper sm:text-[8vw] md:text-[5.5vw]">
             CATÁLOGO
           </h2>
           <SystemText className="hidden text-paper/40 sm:block">

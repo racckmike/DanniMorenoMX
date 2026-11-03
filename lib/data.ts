@@ -230,14 +230,21 @@ export const videos = {
 export const youtubeThumb = (id: string) =>
   `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
-// Instagram highlight sent by the artist's team. IG highlights can't be embedded:
-// once the original video files exist, list them in `clips` (e.g. "/videos/angel-01.mp4",
-// files in public/videos/) and the bubble plays them in-page instead of linking out.
+export type HighlightMedia = { type: "video" | "photo"; src: string };
+
+// Clips the artist sent of her Ángel de la Independencia set (Marcha del
+// Orgullo 2026). Instagram highlights can't be embedded, so the original
+// files play in-page; the IG link stays only as a fallback.
 export const liveHighlight = {
-  clips: [] as string[],
-  title: "Marcha lgbt 🏳️‍🌈🎤",
+  title: "Marcha LGBT+",
   url: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTE0Mzk1MzU5Njk3NjM5?srtk=MTNsM3JubXg3eG5leA==",
+  poster: "/videos/angel-01.mp4",
+  media: [
+    { type: "video", src: "/videos/angel-01.mp4" },
+    { type: "video", src: "/videos/angel-02.mp4" },
+  ] as HighlightMedia[],
 };
+
 
 export type PastShow = {
   title?: string;

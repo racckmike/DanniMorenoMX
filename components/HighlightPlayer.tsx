@@ -1,90 +1,173 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { liveHighlight } from "@/lib/data";
 
-export function HighlightPlayer() {
-  const { clips, title, url } = liveHighlight;
-  const [index, setIndex] = useState<number | null>(null);
-  const open = index !== null;
+const PHOTO_MS = 5000;
 
-  const close = () => setIndex(null);
-  const next = () =>
-    setIndex((i) => (i === null || i + 1 >= clips.length ? null : i + 1));
+export function HighlightPlayer() {
+  const { media, title } = liveHighlight;
+  const [index, setIndex] = useState<number | null>(null);
+  const previewRef = useRef<HTMLVideoElement>(null);
+  const openerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const open = index !== null;
+  const current = open ? media[index] : null;
+
+  // Only pull the clip down once it's actually on screen.
+  useEffect(() => {
+    const el = previewRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) el.play().catch(() => {});
+        else el.pause();
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const close = useCallback(() => setIndex(null), []);
+  const step = useCallback(
+    (delta: number) =>
+      setIndex((i) => {
+        if (i === null) return null;
+        const next = i + delta;
+        if (next < 0) return 0;
+        return next >= media.length ? null : next;
+      }),
+    [media.length],
+  );
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowRight") step(1);
+      if (e.key === "ArrowLeft") step(-1);
+    };
+    const opener = openerRef.current;
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
+    closeRef.current?.focus();
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
+      opener?.focus();
     };
-  }, [open]);
+  }, [open, close, step]);
 
-  const bubble = (
-    <>
-      <span className="rounded-full bg-gradient-to-tr from-sun via-signal to-magenta p-[3px]">
-        <span className="relative block h-24 w-24 overflow-hidden rounded-full border-[3px] border-violet md:h-28 md:w-28">
-          <Image
-            src="/photos/hero-studio.jpg"
-            alt={title}
-            fill
-            sizes="112px"
-            className="object-cover object-[56%_20%]"
-          />
-        </span>
-      </span>
-      <span className="text-sm text-paper">{title}</span>
-    </>
-  );
-  const cls = "mb-10 inline-flex flex-col items-center gap-3";
-
-  if (clips.length === 0) {
-    return (
-      <a href={url} target="_blank" rel="noopener noreferrer" className={cls}>
-        {bubble}
-      </a>
-    );
-  }
+  useEffect(() => {
+    if (current?.type !== "photo") return;
+    const t = setTimeout(() => step(1), PHOTO_MS);
+    return () => clearTimeout(t);
+  }, [current, step]);
 
   return (
     <>
-      <button type="button" onClick={() => setIndex(0)} className={cls}>
-        {bubble}
+      <button
+        ref={openerRef}
+        type="button"
+        onClick={() => setIndex(0)}
+        aria-label={`Ver el show: ${title}`}
+        className="group mb-10 block w-[232px] cursor-pointer text-left sm:w-[268px]"
+      >
+        <span className="scanlines neon-ring relative block aspect-[9/16] overflow-hidden rounded-sm bg-void">
+          <video
+            ref={previewRef}
+            src={liveHighlight.poster}
+            muted
+            loop
+            playsInline
+            preload="none"
+            aria-hidden
+            className="h-full w-full object-cover"
+          />
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-void via-void/70 to-transparent px-3 pb-3 pt-8">
+            <span className="system-label text-[10px] text-paper">
+              {title}
+            </span>
+            <span className="system-label flex items-center gap-1.5 rounded-full bg-magenta px-3 py-1.5 text-[10px] text-paper transition-transform group-hover:scale-105">
+              <svg viewBox="0 0 24 24" aria-hidden className="h-3 w-3 fill-current">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              VER SHOW
+            </span>
+          </span>
+        </span>
       </button>
-      {open && (
+
+      {open && current && (
         <div
           role="dialog"
           aria-modal="true"
           aria-label={title}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-3"
         >
-          <div className="relative h-full w-full max-w-md">
-            <video
-              key={clips[index]}
-              src={clips[index]}
-              autoPlay
-              playsInline
-              onEnded={next}
-              onClick={next}
-              className="h-full w-full object-contain"
-            />
-            <div className="absolute inset-x-3 top-3 flex gap-1" aria-hidden>
-              {clips.map((_, i) => (
+          <div className="relative h-full w-full max-w-[420px]">
+            {current.type === "video" ? (
+              <video
+                key={current.src}
+                src={current.src}
+                autoPlay
+                playsInline
+                controls
+                onEnded={() => step(1)}
+                className="h-full w-full rounded-sm object-contain"
+              />
+            ) : (
+              <Image
+                key={current.src}
+                src={current.src}
+                alt={title}
+                fill
+                sizes="420px"
+                className="rounded-sm object-contain"
+              />
+            )}
+
+            <div className="absolute inset-x-3 top-3 flex gap-1.5" aria-hidden>
+              {media.map((m, i) => (
                 <span
-                  key={i}
-                  className={`h-0.5 flex-1 rounded ${i <= index ? "bg-paper" : "bg-paper/30"}`}
+                  key={m.src}
+                  className={`h-1 flex-1 rounded-full ${
+                    i <= index ? "bg-paper" : "bg-paper/25"
+                  }`}
                 />
               ))}
             </div>
+
             <button
+              type="button"
+              onClick={() => step(-1)}
+              disabled={index === 0}
+              aria-label="Anterior"
+              className="absolute left-0 top-1/2 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-void/60 text-paper disabled:opacity-0"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden className="h-6 w-6 fill-current">
+                <path d="M15 5l-7 7 7 7z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => step(1)}
+              aria-label="Siguiente"
+              className="absolute right-0 top-1/2 flex h-12 w-12 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-void/60 text-paper"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden className="h-6 w-6 fill-current">
+                <path d="M9 5l7 7-7 7z" />
+              </svg>
+            </button>
+
+            <button
+              ref={closeRef}
               type="button"
               onClick={close}
               aria-label="Cerrar"
-              className="absolute right-3 top-8 text-3xl leading-none text-paper"
+              className="absolute right-2 top-7 cursor-pointer rounded-full bg-void/70 px-3 py-1 text-2xl leading-none text-paper"
             >
               ×
             </button>

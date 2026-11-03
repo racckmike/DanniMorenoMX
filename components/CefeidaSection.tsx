@@ -26,7 +26,7 @@ export function CefeidaSection() {
   return (
     <section
       id="cefeida"
-      className="relative overflow-hidden bg-cosmic-deep px-5 py-24 md:px-8 md:py-36"
+      className="scanlines relative overflow-hidden bg-cosmic-deep px-5 py-24 md:px-8 md:py-36"
     >
       <div
         aria-hidden
@@ -41,7 +41,7 @@ export function CefeidaSection() {
         <div className="mb-12 flex flex-wrap items-end justify-between gap-4 md:mb-16">
           <div>
             <SystemText className="text-signal">{cefeida.type} — {cefeida.year}</SystemText>
-            <h2 className="mt-2 font-display text-[16vw] leading-[0.85] text-paper sm:text-[10vw] md:text-[7vw]">
+            <h2 className="chrome-text mt-2 font-display text-[16vw] leading-[0.85] text-paper sm:text-[10vw] md:text-[7vw]">
               CEFEIDA
             </h2>
           </div>

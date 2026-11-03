@@ -43,7 +43,7 @@ export function HeroTransmission() {
   return (
     <section
       id="top"
-      className="relative flex h-[100svh] min-h-[560px] w-full items-end overflow-hidden bg-cosmic-deep"
+      className="scanlines relative flex h-[100svh] min-h-[560px] w-full items-end overflow-hidden bg-cosmic-deep"
     >
       {/*
         The parallax transform lives on the <img> itself, not on a wrapping
@@ -74,6 +74,14 @@ export function HeroTransmission() {
         <div className="absolute inset-0 bg-gradient-to-br from-magenta/15 via-transparent to-cobalt/20" />
       </div>
 
+      {/* vaporwave sun + perspective grid, behind the name */}
+      <div
+        aria-hidden
+        className="sun-disc left-[6%] top-[18%] z-[5] h-[52vw] w-[52vw] opacity-60 md:left-[8%] md:top-[14%] md:h-[30vw] md:w-[30vw]"
+        style={{ opacity: fade * 0.6 }}
+      />
+      <div aria-hidden className="neon-grid z-[5]" />
+
       {glitchTop !== null && (
         <div
           aria-hidden
@@ -103,7 +111,7 @@ export function HeroTransmission() {
           <span className="block text-[19vw] md:text-[15vw] lg:text-[13vw]">
             DANNI
           </span>
-          <span className="block text-[19vw] text-signal md:text-[15vw] lg:text-[13vw]">
+          <span className="neon-text block text-[19vw] text-signal md:text-[15vw] lg:text-[13vw]">
             MORENO
           </span>
         </h1>
@@ -120,10 +128,10 @@ export function HeroTransmission() {
             ESCUCHAR
           </a>
           <a
-            href="#archive"
-            className="system-label rounded-full border border-paper/50 px-6 py-3 text-xs text-paper transition-colors hover:border-paper"
+            href="#presentaciones"
+            className="system-label rounded-full border border-cyan px-6 py-3 text-xs text-paper transition-colors hover:bg-cyan hover:text-void"
           >
-            VER TRANSMISIÓN
+            VER SHOW EN VIVO
           </a>
         </div>
       </div>

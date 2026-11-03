@@ -18,12 +18,12 @@ function ShowRow({ show }: { show: PastShow }) {
       <span className="font-display text-3xl leading-none text-paper sm:text-4xl">
         {show.venue}
         {show.venue && show.city && (
-          <span className="text-paper/75">, {show.city}</span>
+          <span className="text-paper/80">, {show.city}</span>
         )}
         {!show.venue && show.city}
       </span>
       {secondary && (
-        <span className="system-label text-xs text-paper/75">{secondary}</span>
+        <span className="system-label text-xs text-paper/90">{secondary}</span>
       )}
     </li>
   );
@@ -34,11 +34,13 @@ export function LiveArchive() {
   return (
     <section
       id="presentaciones"
-      className="relative bg-gradient-to-b from-magenta to-violet px-5 py-20 md:px-8 md:py-28"
+      className="scanlines relative overflow-hidden bg-gradient-to-b from-violet via-magenta to-violet px-5 py-20 md:px-8 md:py-28"
     >
-      <div className="mx-auto max-w-6xl">
+      <div aria-hidden className="neon-grid" />
+
+      <div className="relative mx-auto max-w-6xl">
         <SystemText className="mb-4 text-paper/80">SE HA PRESENTADO EN</SystemText>
-        <h2 className="mb-10 font-display text-[13vw] leading-[0.85] text-paper sm:text-[8vw] md:mb-14 md:text-[5.5vw]">
+        <h2 className="neon-text mb-10 font-display text-[13vw] leading-[0.85] text-paper sm:text-[8vw] md:mb-14 md:text-[5.5vw]">
           SHOW EN VIVO
         </h2>
 

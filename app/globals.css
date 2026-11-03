@@ -121,6 +121,103 @@ body {
   );
 }
 
+/* ---------- 80s toolkit — vaporwave grid, neon glow, chrome, scanlines ---------- */
+
+.neon-grid {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42%;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 200px;
+  perspective-origin: 50% 0%;
+  -webkit-mask-image: linear-gradient(to top, #000 15%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 15%, transparent 100%);
+}
+
+.neon-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0 -60%;
+  background-image:
+    linear-gradient(to right, rgba(25, 227, 255, 0.55) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 47, 150, 0.55) 1px, transparent 1px);
+  background-size: 54px 54px;
+  transform: rotateX(74deg);
+  transform-origin: 50% 0%;
+  animation: grid-run 3s linear infinite;
+}
+
+@keyframes grid-run {
+  to {
+    background-position: 0 54px;
+  }
+}
+
+.sun-disc {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    var(--color-sun) 0%,
+    var(--color-signal) 48%,
+    var(--color-magenta) 100%
+  );
+  -webkit-mask-image: repeating-linear-gradient(
+    to bottom,
+    #000 0 10px,
+    transparent 10px 15px
+  );
+  mask-image: repeating-linear-gradient(
+    to bottom,
+    #000 0 10px,
+    transparent 10px 15px
+  );
+}
+
+.neon-text {
+  text-shadow:
+    0 0 8px rgba(255, 47, 150, 0.6),
+    0 0 26px rgba(255, 47, 150, 0.35),
+    0 0 52px rgba(25, 227, 255, 0.28);
+}
+
+.chrome-text {
+  background: linear-gradient(
+    180deg,
+    #ffffff 6%,
+    #d6dced 30%,
+    #7d88a3 47%,
+    #ffffff 55%,
+    var(--color-sun) 74%,
+    var(--color-magenta) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.26) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.neon-ring {
+  box-shadow:
+    0 0 0 2px var(--color-magenta),
+    0 0 18px rgba(255, 47, 150, 0.55),
+    0 0 38px rgba(25, 227, 255, 0.3);
+}
+
 .system-label {
   font-family: var(--font-system);
   letter-spacing: 0.14em;
