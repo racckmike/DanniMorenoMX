@@ -68,14 +68,13 @@ export function HighlightPlayer() {
 
   return (
     <>
-      <button
-        ref={openerRef}
-        type="button"
-        onClick={() => setIndex(0)}
-        aria-label={`Ver el show: ${title}`}
-        className="group mb-10 block w-[232px] cursor-pointer text-left sm:w-[268px]"
-      >
-        <span className="scanlines neon-ring relative block aspect-[9/16] overflow-hidden rounded-sm bg-void">
+      {/*
+        The <video> is a sibling of the button, never a child: Safari does not
+        paint media nested inside a <button> (and it's invalid HTML), which is
+        what left this card showing only its poster.
+      */}
+      <div className="group relative mb-10 w-[232px] sm:w-[268px]">
+        <div className="neon-ring relative aspect-[9/16] overflow-hidden rounded-sm bg-void">
           <video
             ref={previewRef}
             src={liveHighlight.poster}
@@ -87,19 +86,24 @@ export function HighlightPlayer() {
             aria-hidden
             className="h-full w-full object-cover"
           />
-          <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-void via-void/70 to-transparent px-3 pb-3 pt-8">
-            <span className="system-label text-[10px] text-paper">
-              {title}
-            </span>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-void via-void/70 to-transparent px-3 pb-3 pt-8">
+            <span className="system-label text-[10px] text-paper">{title}</span>
             <span className="system-label flex items-center gap-1.5 rounded-full bg-magenta px-3 py-1.5 text-[10px] text-paper transition-transform group-hover:scale-105">
               <svg viewBox="0 0 24 24" aria-hidden className="h-3 w-3 fill-current">
                 <path d="M8 5v14l11-7z" />
               </svg>
               VER SHOW
             </span>
-          </span>
-        </span>
-      </button>
+          </div>
+        </div>
+        <button
+          ref={openerRef}
+          type="button"
+          onClick={() => setIndex(0)}
+          aria-label={`Ver el show: ${title}`}
+          className="absolute inset-0 cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
+        />
+      </div>
 
       {open && current && (
         <div
