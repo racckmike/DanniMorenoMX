@@ -15,13 +15,16 @@ export function HighlightPlayer() {
   const open = index !== null;
   const current = open ? media[index] : null;
 
-  // Only pull the clip down once it's actually on screen.
+  // Playback is declarative (autoPlay + preload="auto"), because Safari with
+  // preload="metadata" buffers no frames at all: readyState stays at 1 and the
+  // element paints nothing but its poster. This only pauses the clip while it
+  // is off screen.
   useEffect(() => {
     const el = previewRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) el.play().catch(() => {});
+        if (entry.isIntersecting) void el.play().catch(() => {});
         else el.pause();
       },
       { threshold: 0.25 },
@@ -79,10 +82,11 @@ export function HighlightPlayer() {
             ref={previewRef}
             src={liveHighlight.poster}
             poster="/photos/angel-poster.jpg"
+            autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-hidden
             className="h-full w-full object-cover"
           />
