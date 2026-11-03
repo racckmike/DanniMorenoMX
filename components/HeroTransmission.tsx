@@ -74,12 +74,7 @@ export function HeroTransmission() {
         <div className="absolute inset-0 bg-gradient-to-br from-magenta/15 via-transparent to-cobalt/20" />
       </div>
 
-      {/* vaporwave sun + perspective grid, behind the name */}
-      <div
-        aria-hidden
-        className="sun-disc left-[6%] top-[18%] z-[5] h-[52vw] w-[52vw] opacity-60 md:left-[8%] md:top-[14%] md:h-[30vw] md:w-[30vw]"
-        style={{ opacity: fade * 0.6 }}
-      />
+      {/* perspective grid, behind the name */}
       <div aria-hidden className="neon-grid z-[5]" />
 
       {glitchTop !== null && (

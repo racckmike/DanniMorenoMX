@@ -154,28 +154,6 @@ body {
   }
 }
 
-.sun-disc {
-  position: absolute;
-  border-radius: 9999px;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    var(--color-sun) 0%,
-    var(--color-signal) 48%,
-    var(--color-magenta) 100%
-  );
-  -webkit-mask-image: repeating-linear-gradient(
-    to bottom,
-    #000 0 10px,
-    transparent 10px 15px
-  );
-  mask-image: repeating-linear-gradient(
-    to bottom,
-    #000 0 10px,
-    transparent 10px 15px
-  );
-}
-
 .neon-text {
   text-shadow:
     0 0 8px rgba(255, 47, 150, 0.6),
