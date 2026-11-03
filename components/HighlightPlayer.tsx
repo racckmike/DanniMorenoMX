@@ -79,10 +79,11 @@ export function HighlightPlayer() {
           <video
             ref={previewRef}
             src={liveHighlight.poster}
+            poster="/photos/angel-poster.jpg"
             muted
             loop
             playsInline
-            preload="none"
+            preload="metadata"
             aria-hidden
             className="h-full w-full object-cover"
           />
