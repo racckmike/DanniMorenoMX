@@ -4,8 +4,8 @@ import { useState } from "react";
 import { artist } from "@/lib/data";
 
 const NAV = [
+  { label: "SHOW EN VIVO", href: "#presentaciones" },
   { label: "SOBRE DANNI", href: "#about" },
-  { label: "PRESENTACIONES", href: "#presentaciones" },
   { label: "MÚSICA", href: "#cefeida" },
   { label: "ARCHIVO", href: "#archive" },
   { label: "CONTACTO", href: "#transmission" },

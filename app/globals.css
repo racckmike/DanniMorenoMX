@@ -12,6 +12,8 @@
   --color-violet: #5a1fb8;
   --color-chrome: #d9dce6;
   --color-cosmic-deep: #150b2e;
+  --color-cyan: #19e3ff;
+  --color-sun: #ffd23f;
 
   --font-display: var(--font-anton), "Arial Narrow", sans-serif;
   --font-info: var(--font-inter), system-ui, sans-serif;
@@ -27,6 +29,8 @@
   --color-violet: var(--color-violet);
   --color-chrome: var(--color-chrome);
   --color-cosmic-deep: var(--color-cosmic-deep);
+  --color-cyan: var(--color-cyan);
+  --color-sun: var(--color-sun);
 
   --font-display: var(--font-display);
   --font-info: var(--font-info);
@@ -104,6 +108,17 @@ body {
   97% { opacity: 0.86; }
   98% { opacity: 1; }
   99% { opacity: 0.92; }
+}
+
+.retro-stripes {
+  height: 14px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-magenta) 0 25%,
+    var(--color-signal) 25% 50%,
+    var(--color-sun) 50% 75%,
+    var(--color-cyan) 75% 100%
+  );
 }
 
 .system-label {

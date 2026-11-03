@@ -8,16 +8,16 @@ const signos = catalog.find((r) => r.title === "Signos")!;
 const elAmorEsReal = cefeida.tracks[4];
 const yorokobi = cefeida.tracks[5];
 
-// Frames 1 and 3 are real studio photography, sourced directly from the
+// Frame 1 is real studio photography, sourced directly from the
 // artist's team (see docs/content-sources.md). Everything else is verified
 // Spotify cover art from her own artist page — no video auto-thumbnails.
 const frames = [
   {
-    src: "/photos/archive-studio-01.jpg",
+    src: "/photos/archive-bathroom-01.jpg",
     alt: "Danni Moreno — fotografía de estudio, 2026",
-    label: "ARCHIVO DM — CAMPAÑA 2026",
-    span: "md:col-span-7 md:row-span-2 aspect-[4/5] md:aspect-auto",
-    objectPosition: "71% 42%",
+    label: "ROLLO 03 — CAMPAÑA 2026",
+    span: "md:col-span-7 md:row-span-2 aspect-[3/4] md:aspect-auto",
+    objectPosition: "50% 15%",
   },
   {
     src: elAmorEsReal.cover,
@@ -26,11 +26,10 @@ const frames = [
     span: "md:col-span-5 aspect-square",
   },
   {
-    src: "/photos/archive-bathroom-01.jpg",
-    alt: "Danni Moreno — fotografía de estudio, 2026",
-    label: "ROLLO 03 — CAMPAÑA 2026",
-    span: "md:col-span-5 aspect-[3/4]",
-    objectPosition: "50% 15%",
+    src: vaALlegar.cover,
+    alt: "Va a Llegar — arte oficial, Danni Moreno",
+    label: "FOTOGRAMA 17 — VA A LLEGAR",
+    span: "md:col-span-5 aspect-square",
   },
   {
     src: yorokobi.cover,
@@ -42,19 +41,13 @@ const frames = [
     src: bailemos.cover,
     alt: "Bailemos — arte oficial, Danni Moreno",
     label: "35MM — BAILEMOS",
-    span: "md:col-span-3 aspect-square",
-  },
-  {
-    src: vaALlegar.cover,
-    alt: "Va a Llegar — arte oficial, Danni Moreno",
-    label: "FOTOGRAMA 17 — VA A LLEGAR",
-    span: "md:col-span-8 aspect-[16/7]",
+    span: "md:col-span-4 aspect-square",
   },
   {
     src: signos.cover,
     alt: "Signos — arte oficial, Danni Moreno",
     label: "ARCHIVO DM — SIGNOS",
-    span: "md:col-span-4 aspect-[3/4]",
+    span: "md:col-span-4 aspect-square",
   },
 ];
 
@@ -62,7 +55,7 @@ export function VisualArchive() {
   return (
     <section
       id="archive"
-      className="relative bg-paper px-5 py-24 text-void md:px-8 md:py-36"
+      className="relative bg-sun px-5 py-24 text-void md:px-8 md:py-36"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 flex items-end justify-between md:mb-16">
@@ -71,7 +64,7 @@ export function VisualArchive() {
             <br />
             VISUAL
           </h2>
-          <SystemText className="hidden text-void/50 sm:block">
+          <SystemText className="hidden text-void/70 sm:block">
             FOTOGRAFÍA Y ARTE
           </SystemText>
         </div>

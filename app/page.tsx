@@ -11,11 +11,14 @@ export default function Home() {
   return (
     <main>
       <HeroTransmission />
-      <ArtistBio />
+      <div aria-hidden className="retro-stripes" />
       <LiveArchive />
+      <ArtistBio />
+      <div aria-hidden className="retro-stripes" />
       <CefeidaSection />
       <FeaturedTransmission />
       <VisualArchive />
+      <div aria-hidden className="retro-stripes" />
       <MusicArchive />
       <FinalTransmission />
     </main>

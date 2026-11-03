@@ -39,7 +39,7 @@ export function FinalTransmission() {
     <section
       id="transmission"
       ref={ref}
-      className="relative flex min-h-[90svh] flex-col items-center justify-center gap-12 overflow-hidden bg-void px-5 py-24 text-center md:px-8"
+      className="relative flex min-h-[90svh] flex-col items-center justify-center gap-12 overflow-hidden bg-gradient-to-b from-void via-cosmic-deep to-violet px-5 py-24 text-center md:px-8"
     >
       <div
         aria-hidden

@@ -6,27 +6,27 @@ export function ArtistBio() {
   return (
     <section
       id="about"
-      className="relative border-t border-paper/10 bg-void px-5 py-24 md:px-8 md:py-36"
+      className="relative bg-cobalt px-5 py-24 md:px-8 md:py-36"
     >
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-12 md:gap-16">
         <div className="relative aspect-[4/5] w-full overflow-hidden md:col-span-5">
           <Image
-            src="/photos/portrait-about.jpg"
+            src="/photos/archive-studio-01.jpg"
             alt="Danni Moreno"
             fill
             sizes="(min-width: 768px) 40vw, 90vw"
             className="object-cover"
-            style={{ objectPosition: "54% 21%" }}
+            style={{ objectPosition: "71% 42%" }}
           />
         </div>
 
         <div className="flex flex-col justify-center md:col-span-7">
-          <SystemText className="mb-4 text-paper/50">SOBRE DANNI</SystemText>
+          <SystemText className="mb-4 text-paper/70">SOBRE DANNI</SystemText>
           <h2 className="font-display mb-6 text-[10vw] leading-[0.88] text-paper sm:text-[6vw] md:text-[4vw]">
             DANNI MORENO
           </h2>
 
-          <div className="flex max-w-xl flex-col gap-5 text-balance text-base leading-relaxed text-paper/75 md:text-lg">
+          <div className="flex max-w-xl flex-col gap-5 text-balance text-base leading-relaxed text-paper/90 md:text-lg">
             <p>
               Danni Moreno es artista, compositora y productora musical de{" "}
               {artist.city}, {artist.degree.toLowerCase()}. Su proyecto se
@@ -75,25 +75,25 @@ export function ArtistBio() {
             </p>
           </div>
 
-          <dl className="system-label mt-10 grid grid-cols-2 gap-6 text-xs text-paper/50 sm:grid-cols-3">
+          <dl className="system-label mt-10 grid grid-cols-2 gap-6 text-xs text-paper/70 sm:grid-cols-3">
             <div>
-              <dt className="text-paper/30">ROL</dt>
+              <dt className="text-paper/60">ROL</dt>
               <dd className="mt-1 text-paper">{artist.roles.join(", ").toUpperCase()}</dd>
             </div>
             <div>
-              <dt className="text-paper/30">BASE</dt>
+              <dt className="text-paper/60">BASE</dt>
               <dd className="mt-1 text-paper">{artist.city.toUpperCase()}</dd>
             </div>
             <div>
-              <dt className="text-paper/30">SELLO</dt>
+              <dt className="text-paper/60">SELLO</dt>
               <dd className="mt-1 text-paper">WARNER MUSIC GROUP</dd>
             </div>
             <div>
-              <dt className="text-paper/30">REPRODUCCIONES</dt>
+              <dt className="text-paper/60">REPRODUCCIONES</dt>
               <dd className="mt-1 text-paper">{artist.stats.streamsOnOneSong} EN UNA CANCIÓN</dd>
             </div>
             <div>
-              <dt className="text-paper/30">OYENTES</dt>
+              <dt className="text-paper/60">OYENTES</dt>
               <dd className="mt-1 text-paper">{artist.stats.monthlyListeners} MENSUALES · SPOTIFY</dd>
             </div>
           </dl>
