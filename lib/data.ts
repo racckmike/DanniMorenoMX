@@ -230,8 +230,11 @@ export const videos = {
 export const youtubeThumb = (id: string) =>
   `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
-// Instagram highlight sent by the artist's team; cannot be embedded, so it links out.
+// Instagram highlight sent by the artist's team. IG highlights can't be embedded:
+// once the original video files exist, list them in `clips` (e.g. "/videos/angel-01.mp4",
+// files in public/videos/) and the bubble plays them in-page instead of linking out.
 export const liveHighlight = {
+  clips: [] as string[],
   title: "Marcha lgbt 🏳️‍🌈🎤",
   url: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTE0Mzk1MzU5Njk3NjM5?srtk=MTNsM3JubXg3eG5leA==",
 };

@@ -1,5 +1,5 @@
-import Image from "next/image";
-import { liveHighlight, pastShows, type PastShow } from "@/lib/data";
+import { pastShows, type PastShow } from "@/lib/data";
+import { HighlightPlayer } from "./HighlightPlayer";
 import { SystemText } from "./SystemText";
 
 function formatDate(show: PastShow) {
@@ -42,25 +42,7 @@ export function LiveArchive() {
           SHOW EN VIVO
         </h2>
 
-        <a
-          href={liveHighlight.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mb-10 inline-flex flex-col items-center gap-3"
-        >
-          <span className="rounded-full bg-gradient-to-tr from-sun via-signal to-magenta p-[3px]">
-            <span className="relative block h-24 w-24 overflow-hidden rounded-full border-[3px] border-violet md:h-28 md:w-28">
-              <Image
-                src="/photos/hero-studio.jpg"
-                alt={liveHighlight.title}
-                fill
-                sizes="112px"
-                className="object-cover object-[56%_20%]"
-              />
-            </span>
-          </span>
-          <span className="text-sm text-paper">{liveHighlight.title}</span>
-        </a>
+        <HighlightPlayer />
 
         <ul className="border-y border-paper/30">
           <ShowRow show={featured} />
