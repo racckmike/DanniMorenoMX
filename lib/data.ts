@@ -230,6 +230,12 @@ export const videos = {
 export const youtubeThumb = (id: string) =>
   `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
+// Instagram highlight sent by the artist's team; cannot be embedded, so it links out.
+export const liveHighlight = {
+  title: "Marcha lgbt 🏳️‍🌈🎤",
+  url: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTE0Mzk1MzU5Njk3NjM5?srtk=MTNsM3JubXg3eG5leA==",
+};
+
 export type PastShow = {
   title?: string;
   venue?: string;
