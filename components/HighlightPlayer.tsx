@@ -33,6 +33,24 @@ export function HighlightPlayer() {
     return () => io.disconnect();
   }, []);
 
+  // Safari refuses even muted autoplay when the visitor has auto-play off for
+  // the site (or is in Low Power Mode), and our overlay button covers the
+  // native play control. The first gesture anywhere counts as user intent, so
+  // retry there instead of leaving a still frame.
+  useEffect(() => {
+    const el = previewRef.current;
+    if (!el) return;
+    const kick = () => {
+      if (el.paused) void el.play().catch(() => {});
+    };
+    window.addEventListener("pointerdown", kick, { once: true });
+    window.addEventListener("scroll", kick, { once: true, passive: true });
+    return () => {
+      window.removeEventListener("pointerdown", kick);
+      window.removeEventListener("scroll", kick);
+    };
+  }, []);
+
   const close = useCallback(() => setIndex(null), []);
   const step = useCallback(
     (delta: number) =>
@@ -121,9 +139,11 @@ export function HighlightPlayer() {
               <video
                 key={current.src}
                 src={current.src}
+                poster={index === 0 ? "/photos/angel-poster.jpg" : undefined}
                 autoPlay
                 playsInline
                 controls
+                preload="auto"
                 onEnded={() => step(1)}
                 className="h-full w-full rounded-sm object-contain"
               />
