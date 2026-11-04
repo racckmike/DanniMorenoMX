@@ -2,23 +2,20 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { liveHighlight } from "@/lib/data";
+import { liveHighlights, type Highlight } from "@/lib/data";
 
 const PHOTO_MS = 5000;
 
-export function HighlightPlayer() {
-  const { media, title } = liveHighlight;
-  const [index, setIndex] = useState<number | null>(null);
+function Bubble({
+  highlight,
+  onOpen,
+}: {
+  highlight: Highlight;
+  onOpen: () => void;
+}) {
   const previewRef = useRef<HTMLVideoElement>(null);
-  const openerRef = useRef<HTMLButtonElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const open = index !== null;
-  const current = open ? media[index] : null;
 
-  // Playback is declarative (autoPlay + preload="auto"), because Safari with
-  // preload="metadata" buffers no frames at all: readyState stays at 1 and the
-  // element paints nothing but its poster. This only pauses the clip while it
-  // is off screen.
+  // Pause the clip while it's off screen.
   useEffect(() => {
     const el = previewRef.current;
     if (!el) return;
@@ -34,9 +31,8 @@ export function HighlightPlayer() {
   }, []);
 
   // Safari refuses even muted autoplay when the visitor has auto-play off for
-  // the site (or is in Low Power Mode), and our overlay button covers the
-  // native play control. The first gesture anywhere counts as user intent, so
-  // retry there instead of leaving a still frame.
+  // the site (or is in Low Power Mode), and the overlay button covers the
+  // native play control. The first gesture anywhere counts as user intent.
   useEffect(() => {
     const el = previewRef.current;
     if (!el) return;
@@ -51,35 +47,90 @@ export function HighlightPlayer() {
     };
   }, []);
 
-  const close = useCallback(() => setIndex(null), []);
+  return (
+    // The media is a sibling of the button, never a child: Safari does not
+    // paint video nested inside a <button>.
+    <div className="group relative w-[150px] shrink-0 sm:w-[200px]">
+      <div className="neon-ring relative aspect-[9/16] overflow-hidden rounded-sm bg-void">
+        {highlight.preview ? (
+          <video
+            ref={previewRef}
+            src={highlight.preview}
+            poster={highlight.cover}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <Image
+            src={highlight.cover}
+            alt=""
+            fill
+            sizes="200px"
+            className="object-cover"
+          />
+        )}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-void via-void/70 to-transparent px-2.5 pb-2.5 pt-8">
+          <span className="system-label text-[9px] text-paper sm:text-[10px]">
+            {highlight.title}
+          </span>
+          <span className="system-label flex items-center gap-1 rounded-full bg-magenta px-2.5 py-1.5 text-[9px] text-paper transition-transform group-hover:scale-105 sm:text-[10px]">
+            <svg viewBox="0 0 24 24" aria-hidden className="h-3 w-3 fill-current">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            VER
+          </span>
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={onOpen}
+        aria-label={`Ver el show: ${highlight.title}`}
+        className="absolute inset-0 cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
+      />
+    </div>
+  );
+}
+
+export function HighlightPlayer() {
+  const [openId, setOpenId] = useState<string | null>(null);
+  const [index, setIndex] = useState(0);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  const highlight = liveHighlights.find((h) => h.id === openId) ?? null;
+  const current = highlight ? highlight.media[index] : null;
+
+  const close = useCallback(() => setOpenId(null), []);
   const step = useCallback(
-    (delta: number) =>
-      setIndex((i) => {
-        if (i === null) return null;
-        const next = i + delta;
-        if (next < 0) return 0;
-        return next >= media.length ? null : next;
-      }),
-    [media.length],
+    (delta: number) => {
+      if (!highlight) return;
+      const next = index + delta;
+      if (next < 0) return;
+      if (next >= highlight.media.length) setOpenId(null);
+      else setIndex(next);
+    },
+    [highlight, index],
   );
 
   useEffect(() => {
-    if (!open) return;
+    if (!highlight) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
       if (e.key === "ArrowRight") step(1);
       if (e.key === "ArrowLeft") step(-1);
     };
-    const opener = openerRef.current;
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
     closeRef.current?.focus();
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
-      opener?.focus();
     };
-  }, [open, close, step]);
+  }, [highlight, close, step]);
 
   useEffect(() => {
     if (current?.type !== "photo") return;
@@ -89,49 +140,24 @@ export function HighlightPlayer() {
 
   return (
     <>
-      {/*
-        The <video> is a sibling of the button, never a child: Safari does not
-        paint media nested inside a <button> (and it's invalid HTML), which is
-        what left this card showing only its poster.
-      */}
-      <div className="group relative mb-10 w-[232px] sm:w-[268px]">
-        <div className="neon-ring relative aspect-[9/16] overflow-hidden rounded-sm bg-void">
-          <video
-            ref={previewRef}
-            src={liveHighlight.poster}
-            poster="/photos/angel-poster.jpg"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden
-            className="h-full w-full object-cover"
+      <div className="mb-10 flex gap-4 overflow-x-auto pb-1">
+        {liveHighlights.map((h) => (
+          <Bubble
+            key={h.id}
+            highlight={h}
+            onOpen={() => {
+              setIndex(0);
+              setOpenId(h.id);
+            }}
           />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-void via-void/70 to-transparent px-3 pb-3 pt-8">
-            <span className="system-label text-[10px] text-paper">{title}</span>
-            <span className="system-label flex items-center gap-1.5 rounded-full bg-magenta px-3 py-1.5 text-[10px] text-paper transition-transform group-hover:scale-105">
-              <svg viewBox="0 0 24 24" aria-hidden className="h-3 w-3 fill-current">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              VER SHOW
-            </span>
-          </div>
-        </div>
-        <button
-          ref={openerRef}
-          type="button"
-          onClick={() => setIndex(0)}
-          aria-label={`Ver el show: ${title}`}
-          className="absolute inset-0 cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
-        />
+        ))}
       </div>
 
-      {open && current && (
+      {highlight && current && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={title}
+          aria-label={highlight.title}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-3"
         >
           <div className="relative h-full w-full max-w-[420px]">
@@ -139,7 +165,7 @@ export function HighlightPlayer() {
               <video
                 key={current.src}
                 src={current.src}
-                poster={index === 0 ? "/photos/angel-poster.jpg" : undefined}
+                poster={index === 0 ? highlight.cover : undefined}
                 autoPlay
                 playsInline
                 controls
@@ -151,7 +177,7 @@ export function HighlightPlayer() {
               <Image
                 key={current.src}
                 src={current.src}
-                alt={title}
+                alt={highlight.title}
                 fill
                 sizes="420px"
                 className="rounded-sm object-contain"
@@ -159,7 +185,7 @@ export function HighlightPlayer() {
             )}
 
             <div className="absolute inset-x-3 top-3 flex gap-1.5" aria-hidden>
-              {media.map((m, i) => (
+              {highlight.media.map((m, i) => (
                 <span
                   key={m.src}
                   className={`h-1 flex-1 rounded-full ${

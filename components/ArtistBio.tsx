@@ -32,7 +32,7 @@ export function ArtistBio() {
               {artist.city}, {artist.degree.toLowerCase()}. Su proyecto se
               desarrolla dentro del pop, combinando una identidad fresca y
               cercana con sonidos bailables, influencias disco y referencias
-              de los 80 y los 2000.
+              de los 70, los 80 y los 2000.
             </p>
             <p>
               Su formación como productora le ha permitido desarrollar una

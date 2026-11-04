@@ -232,18 +232,32 @@ export const youtubeThumb = (id: string) =>
 
 export type HighlightMedia = { type: "video" | "photo"; src: string };
 
-// Clips the artist sent of her Ángel de la Independencia set (Marcha del
-// Orgullo 2026). Instagram highlights can't be embedded, so the original
-// files play in-page; the IG link stays only as a fallback.
-export const liveHighlight = {
-  title: "Marcha LGBT+",
-  url: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTE0Mzk1MzU5Njk3NjM5?srtk=MTNsM3JubXg3eG5leA==",
-  poster: "/videos/angel-01.mp4",
-  media: [
-    { type: "video", src: "/videos/angel-01.mp4" },
-    { type: "video", src: "/videos/angel-02.mp4" },
-  ] as HighlightMedia[],
+export type Highlight = {
+  id: string;
+  /** Label under the bubble. */
+  title: string;
+  /** Still shown on the bubble, and the video's poster when `preview` is set. */
+  cover: string;
+  /** Clip that loops muted in the bubble. Without it the bubble shows `cover`. */
+  preview?: string;
+  media: HighlightMedia[];
 };
+
+// Material the artist sent of her own shows. Instagram highlights can't be
+// embedded, so her original files play in-page. Add a highlight only when the
+// real clips or photos for it exist — never pad the row with a placeholder.
+export const liveHighlights: Highlight[] = [
+  {
+    id: "angel-2026",
+    title: "Marcha LGBT+",
+    cover: "/photos/angel-poster.jpg",
+    preview: "/videos/angel-01.mp4",
+    media: [
+      { type: "video", src: "/videos/angel-01.mp4" },
+      { type: "video", src: "/videos/angel-02.mp4" },
+    ],
+  },
+];
 
 
 export type PastShow = {
@@ -289,17 +303,10 @@ export const pastShows: PastShow[] = [
     dateIsYearOnly: true,
   },
   {
-    // City not yet provided — venue, "sold out," and year are confirmed.
-    // Played twice (2023 and 2024), so it's listed as two entries.
+    // City not yet provided — venue, "sold out," and years are confirmed.
     venue: "Foro del Tejedor",
     title: "Sold out",
-    date: "2023",
-    dateIsYearOnly: true,
-  },
-  {
-    venue: "Foro del Tejedor",
-    title: "Sold out",
-    date: "2024",
+    date: "2023, 2024",
     dateIsYearOnly: true,
   },
 ];
