@@ -13,9 +13,8 @@ const frames = [
   },
   { src: "/photos/archive-5181.jpg", span: "md:col-span-5 aspect-[3/4]", tilt: "rotate-1" },
   { src: "/photos/archive-5180.jpg", span: "md:col-span-5 aspect-[3/4]", tilt: "-rotate-1" },
-  { src: "/photos/archive-5179.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
-  { src: "/photos/archive-5178.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "-rotate-1" },
-  { src: "/photos/archive-3642.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
+  { src: "/photos/archive-5179.jpg", span: "md:col-span-6 aspect-[3/4]", tilt: "rotate-1" },
+  { src: "/photos/archive-5178.jpg", span: "md:col-span-6 aspect-[3/4]", tilt: "-rotate-1" },
   { src: "/photos/archive-3596.jpg", span: "md:col-span-6 aspect-[3/4]", tilt: "-rotate-1" },
   { src: "/photos/archive-0273.jpg", span: "md:col-span-6 aspect-[3/4]", tilt: "rotate-1" },
 ];
