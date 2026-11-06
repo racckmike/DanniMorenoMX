@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { videos, youtubeThumb } from "@/lib/data";
+import { artist, videos, youtubeThumb } from "@/lib/data";
 import { RecDot, SystemText } from "./SystemText";
 
 export function FeaturedTransmission() {
@@ -63,6 +63,18 @@ export function FeaturedTransmission() {
             <span className="crt-knob" />
           </div>
         </div>
+
+        <a
+          href={artist.youtubeVideos}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="system-label sticker mt-10 inline-flex items-center gap-2 rounded-full border-2 border-void bg-cyan px-6 py-3 text-xs text-void transition-transform hover:-translate-y-0.5"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden className="h-4 w-4 fill-current">
+            <path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z" />
+          </svg>
+          VER MÁS VIDEOS DE DANNI
+        </a>
       </div>
     </section>
   );

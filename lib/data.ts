@@ -16,6 +16,8 @@ export const artist = {
   instagram: "https://www.instagram.com/dannimorenomx/",
   tiktok: "https://www.tiktok.com/@dannimorenomx",
   youtube: "https://www.youtube.com/@DanniMorenoMX",
+  // Straight to the channel's Videos tab, so the button lands on the list.
+  youtubeVideos: "https://www.youtube.com/@DanniMorenoMX/videos",
   spotify: "https://open.spotify.com/artist/7jbMO8GaINf90FkmWvzUAN",
   appleMusic: "https://music.apple.com/us/artist/danni-moreno/1433651209",
   facebook: "https://www.facebook.com/DanniMorenoMX/",
