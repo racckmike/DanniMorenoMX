@@ -6,6 +6,31 @@ import { liveHighlights, type Highlight } from "@/lib/data";
 
 const PHOTO_MS = 5000;
 
+function SlotCaption({ title, dim }: { title: string; dim?: boolean }) {
+  return (
+    <p
+      className={`system-label mt-2.5 text-[9px] leading-relaxed sm:text-[10px] ${
+        dim ? "text-paper/55" : "text-paper"
+      }`}
+    >
+      {title}
+    </p>
+  );
+}
+
+function EmptySlot({ title }: { title: string }) {
+  return (
+    <div className="w-[150px] shrink-0 sm:w-[200px]">
+      <div className="flex aspect-[9/16] items-center justify-center rounded-sm border-2 border-dashed border-paper/30 bg-void/25 px-3">
+        <span className="system-label text-[9px] text-paper/40">
+          PRÓXIMAMENTE
+        </span>
+      </div>
+      <SlotCaption title={title} dim />
+    </div>
+  );
+}
+
 function Bubble({
   highlight,
   onOpen,
@@ -50,7 +75,8 @@ function Bubble({
   return (
     // The media is a sibling of the button, never a child: Safari does not
     // paint video nested inside a <button>.
-    <div className="group relative w-[150px] shrink-0 sm:w-[200px]">
+    <div className="group w-[150px] shrink-0 sm:w-[200px]">
+      <div className="relative">
       <div className="neon-ring relative aspect-[9/16] overflow-hidden rounded-sm bg-void">
         {highlight.preview ? (
           <video
@@ -65,7 +91,7 @@ function Bubble({
             aria-hidden
             className="h-full w-full object-cover"
           />
-        ) : (
+        ) : highlight.cover ? (
           <Image
             src={highlight.cover}
             alt=""
@@ -73,11 +99,8 @@ function Bubble({
             sizes="200px"
             className="object-cover"
           />
-        )}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-void via-void/70 to-transparent px-2.5 pb-2.5 pt-8">
-          <span className="system-label text-[9px] text-paper sm:text-[10px]">
-            {highlight.title}
-          </span>
+        ) : null}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-end bg-gradient-to-t from-void/90 to-transparent px-2.5 pb-2.5 pt-10">
           <span className="system-label flex items-center gap-1 rounded-full bg-magenta px-2.5 py-1.5 text-[9px] text-paper transition-transform group-hover:scale-105 sm:text-[10px]">
             <svg viewBox="0 0 24 24" aria-hidden className="h-3 w-3 fill-current">
               <path d="M8 5v14l11-7z" />
@@ -85,13 +108,15 @@ function Bubble({
             VER
           </span>
         </div>
+        </div>
+        <button
+          type="button"
+          onClick={onOpen}
+          aria-label={`Ver el show: ${highlight.title}`}
+          className="absolute inset-0 cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
+        />
       </div>
-      <button
-        type="button"
-        onClick={onOpen}
-        aria-label={`Ver el show: ${highlight.title}`}
-        className="absolute inset-0 cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
-      />
+      <SlotCaption title={highlight.title} />
     </div>
   );
 }
@@ -141,16 +166,20 @@ export function HighlightPlayer() {
   return (
     <>
       <div className="mb-10 flex gap-4 overflow-x-auto pb-1">
-        {liveHighlights.map((h) => (
-          <Bubble
-            key={h.id}
-            highlight={h}
-            onOpen={() => {
-              setIndex(0);
-              setOpenId(h.id);
-            }}
-          />
-        ))}
+        {liveHighlights.map((h) =>
+          h.media.length === 0 ? (
+            <EmptySlot key={h.id} title={h.title} />
+          ) : (
+            <Bubble
+              key={h.id}
+              highlight={h}
+              onOpen={() => {
+                setIndex(0);
+                setOpenId(h.id);
+              }}
+            />
+          ),
+        )}
       </div>
 
       {highlight && current && (

@@ -234,28 +234,39 @@ export type HighlightMedia = { type: "video" | "photo"; src: string };
 
 export type Highlight = {
   id: string;
-  /** Label under the bubble. */
+  /** Label on the bubble. */
   title: string;
   /** Still shown on the bubble, and the video's poster when `preview` is set. */
-  cover: string;
+  cover?: string;
   /** Clip that loops muted in the bubble. Without it the bubble shows `cover`. */
   preview?: string;
+  /** Empty until the artist sends that show's clips — the slot renders as "próximamente". */
   media: HighlightMedia[];
 };
 
-// Material the artist sent of her own shows. Instagram highlights can't be
-// embedded, so her original files play in-page. Add a highlight only when the
-// real clips or photos for it exist — never pad the row with a placeholder.
+// The three shows the artist chose for this row. Instagram highlights can't be
+// embedded, so her own files play in-page. Leave `media` empty rather than
+// filling a slot with footage from a different show.
 export const liveHighlights: Highlight[] = [
   {
     id: "angel-2026",
-    title: "Marcha LGBT+",
+    title: "Ángel de la Independencia · CDMX 2026",
     cover: "/photos/angel-poster.jpg",
     preview: "/videos/angel-01.mp4",
     media: [
       { type: "video", src: "/videos/angel-01.mp4" },
       { type: "video", src: "/videos/angel-02.mp4" },
     ],
+  },
+  {
+    id: "concierto-2025",
+    title: "Concierto 2025 · Sold out",
+    media: [],
+  },
+  {
+    id: "foro-tejedor-2025",
+    title: "Foro del Tejedor · 2025",
+    media: [],
   },
 ];
 
