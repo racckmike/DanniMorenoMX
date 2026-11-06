@@ -25,7 +25,7 @@ export function MediaFrame({
   objectPosition?: string;
 }) {
   return (
-    <figure className={`group relative overflow-hidden bg-cosmic-deep ${className}`}>
+    <figure className={`sticker group relative overflow-hidden border-2 border-void bg-plum ${className}`}>
       <Image
         src={src}
         alt={alt}

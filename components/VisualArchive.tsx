@@ -55,16 +55,16 @@ export function VisualArchive() {
   return (
     <section
       id="archive"
-      className="relative bg-sun px-5 py-24 text-void md:px-8 md:py-36"
+      className="relative overflow-hidden bg-cyan px-5 py-24 text-void md:px-8 md:py-36"
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 flex items-end justify-between md:mb-16">
-          <h2 className="font-display text-[13vw] leading-[0.85] text-void sm:text-[8vw] md:text-[5.5vw]">
+          <h2 className="pop-title font-display text-[13vw] leading-[0.85] text-void sm:text-[8vw] md:text-[5.5vw]">
             ARCHIVO
             <br />
             VISUAL
           </h2>
-          <SystemText className="hidden text-void/70 sm:block">
+          <SystemText className="banner-label hidden text-[10px] sm:inline-block">
             FOTOGRAFÍA Y ARTE
           </SystemText>
         </div>

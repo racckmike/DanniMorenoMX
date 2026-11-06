@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  /* Core pop palette — derived from Danni's verified CEFEIDA/Pecar artwork:
-     warm cream, near-black, a confident signal red, and three large-moment
-     accents (cobalt, magenta, violet) instead of a monochrome terminal look. */
-  --color-void: #0b0b14;
-  --color-paper: #f7efe0;
-  --color-signal: #ff3d2e;
-  --color-cobalt: #2138e0;
-  --color-magenta: #ff2f96;
-  --color-violet: #5a1fb8;
-  --color-chrome: #d9dce6;
-  --color-cosmic-deep: #150b2e;
-  --color-cyan: #19e3ff;
-  --color-sun: #ffd23f;
+  /* Retro pop-television palette: vintage cream paper, hot pink and bubblegum,
+     electric blue and turquoise, plum and ink for weight. Deliberately no
+     yellow — the artist asked for it to be kept out. */
+  --color-void: #242033;
+  --color-plum: #421a4b;
+  --color-paper: #fff0db;
+  --color-signal: #f43f91;
+  --color-magenta: #ff9bcb;
+  --color-cobalt: #3188c9;
+  --color-cyan: #79c9ce;
+  --color-violet: #b79bd8;
+  --color-red: #d94b60;
+  --color-chrome: #f6e4d2;
 
   --font-display: var(--font-anton), "Arial Narrow", sans-serif;
   --font-info: var(--font-inter), system-ui, sans-serif;
@@ -22,15 +22,15 @@
 
 @theme inline {
   --color-void: var(--color-void);
+  --color-plum: var(--color-plum);
   --color-paper: var(--color-paper);
   --color-signal: var(--color-signal);
-  --color-cobalt: var(--color-cobalt);
   --color-magenta: var(--color-magenta);
-  --color-violet: var(--color-violet);
-  --color-chrome: var(--color-chrome);
-  --color-cosmic-deep: var(--color-cosmic-deep);
+  --color-cobalt: var(--color-cobalt);
   --color-cyan: var(--color-cyan);
-  --color-sun: var(--color-sun);
+  --color-violet: var(--color-violet);
+  --color-red: var(--color-red);
+  --color-chrome: var(--color-chrome);
 
   --font-display: var(--font-display);
   --font-info: var(--font-info);
@@ -41,27 +41,27 @@
 }
 
 * {
-  scrollbar-color: var(--color-signal) var(--color-void);
+  scrollbar-color: var(--color-signal) var(--color-chrome);
 }
 
 html {
-  background: var(--color-void);
-  color-scheme: dark;
+  background: var(--color-paper);
+  color-scheme: light;
 }
 
 body {
-  background: var(--color-void);
-  color: var(--color-paper);
+  background: var(--color-paper);
+  color: var(--color-void);
   font-family: var(--font-info);
   overflow-x: clip;
 }
 
 ::selection {
-  background: var(--color-magenta);
+  background: var(--color-signal);
   color: var(--color-paper);
 }
 
-/* ---------- Analog texture — kept as a faint unifying grain only, never the subject ---------- */
+/* ---------- Printed-paper texture ---------- */
 
 .grain::before {
   content: "";
@@ -69,9 +69,186 @@ body {
   inset: 0;
   z-index: 90;
   pointer-events: none;
-  opacity: 0.025;
+  opacity: 0.055;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 160px 160px;
+}
+
+/* Offset halftone dots, the way cheap 80s colour printing looked. */
+.halftone {
+  background-image: radial-gradient(
+    currentColor 1px,
+    transparent 1.3px
+  );
+  background-size: 7px 7px;
+  opacity: 0.16;
+}
+
+.checker {
+  background-image:
+    linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%),
+    linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%);
+  background-size: 22px 22px;
+  background-position: 0 0, 11px 11px;
+}
+
+/* ---------- Pop lettering ---------- */
+
+/* Layered colour shadow, like a printed 80s album title. */
+.pop-title {
+  text-shadow:
+    3px 3px 0 var(--color-magenta),
+    6px 6px 0 var(--color-cobalt);
+}
+
+.pop-title-light {
+  text-shadow:
+    3px 3px 0 var(--color-signal),
+    6px 6px 0 var(--color-void);
+}
+
+.text-outline {
+  -webkit-text-stroke: 2px var(--color-void);
+  paint-order: stroke fill;
+}
+
+/* ---------- Printed objects ---------- */
+
+/* Pink banner behind a section title, like a magazine kicker. */
+.banner-label {
+  width: fit-content;
+  align-self: flex-start;
+  background: var(--color-signal);
+  color: var(--color-paper);
+  padding: 0.45rem 1.1rem;
+  transform: rotate(-1.5deg);
+  box-shadow: 4px 4px 0 var(--color-void);
+}
+
+/* Hard offset shadow used on cards, sleeves and frames. */
+.sticker {
+  box-shadow: 6px 6px 0 var(--color-void);
+}
+
+.sticker-pink {
+  box-shadow: 6px 6px 0 var(--color-signal);
+}
+
+.polaroid {
+  background: #fffdf8;
+  padding: 12px 12px 54px;
+  box-shadow: 6px 6px 0 rgba(36, 32, 51, 0.22);
+}
+
+/* Diagonal speed lines that sat next to 80s titles. */
+.speed-lines {
+  background-image: repeating-linear-gradient(
+    -70deg,
+    var(--color-signal) 0 4px,
+    transparent 4px 10px
+  );
+}
+
+/* ---------- CRT television ---------- */
+
+.crt-frame {
+  position: relative;
+  border-radius: 26px;
+  background: linear-gradient(170deg, #efe0cd 0%, #d9c4ae 48%, #b99e86 100%);
+  padding: 18px 18px 46px;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.65),
+    8px 8px 0 var(--color-void);
+}
+
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0c0a14;
+  box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.75);
+}
+
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background:
+    radial-gradient(130% 110% at 50% 50%, transparent 58%, rgba(0, 0, 0, 0.42) 100%),
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.17) 0 1px, transparent 1px 3px);
+}
+
+/* The two knobs on the bezel. */
+.crt-knob {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 34% 30%, #fff 0 12%, #a98f76 55%, #6d5947 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- Film strip ---------- */
+
+.filmstrip {
+  background: #171420;
+  padding: 20px 10px;
+  position: relative;
+}
+
+.filmstrip::before,
+.filmstrip::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #fff0db 0 9px,
+    transparent 9px 20px
+  );
+  opacity: 0.85;
+}
+
+.filmstrip::before { top: 4px; }
+.filmstrip::after { bottom: 4px; }
+
+/* ---------- Vinyl ---------- */
+
+.vinyl {
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 50% 50%, var(--color-signal) 0 13%, transparent 13.5%),
+    repeating-radial-gradient(circle at 50% 50%, #1b1824 0 2px, #2b2738 2px 4px);
+  box-shadow: 4px 4px 0 rgba(36, 32, 51, 0.3);
+}
+
+/* ---------- Broadcast bits ---------- */
+
+.retro-stripes {
+  height: 14px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-signal) 0 25%,
+    var(--color-magenta) 25% 50%,
+    var(--color-cyan) 50% 75%,
+    var(--color-cobalt) 75% 100%
+  );
+}
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(36, 32, 51, 0.05) 0 1px,
+    transparent 1px 3px
+  );
 }
 
 .text-aberrate {
@@ -86,16 +263,14 @@ body {
 }
 
 .aberrate-on .text-aberrate::before {
-  color: var(--color-cobalt);
+  color: var(--color-cyan);
   transform: translate(-2px, 0.5px);
-  opacity: 0.55;
-  mix-blend-mode: screen;
+  opacity: 0.5;
 }
 .aberrate-on .text-aberrate::after {
-  color: var(--color-magenta);
+  color: var(--color-signal);
   transform: translate(2px, -0.5px);
-  opacity: 0.55;
-  mix-blend-mode: screen;
+  opacity: 0.5;
 }
 
 @keyframes blink {
@@ -105,95 +280,17 @@ body {
 
 @keyframes flicker {
   0%, 96%, 100% { opacity: 1; }
-  97% { opacity: 0.86; }
+  97% { opacity: 0.9; }
   98% { opacity: 1; }
-  99% { opacity: 0.92; }
+  99% { opacity: 0.94; }
 }
 
-.retro-stripes {
-  height: 14px;
-  background: linear-gradient(
-    to bottom,
-    var(--color-magenta) 0 25%,
-    var(--color-signal) 25% 50%,
-    var(--color-sun) 50% 75%,
-    var(--color-cyan) 75% 100%
-  );
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
 }
 
-/* ---------- 80s toolkit — vaporwave grid, neon glow, chrome, scanlines ---------- */
-
-.neon-grid {
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 42%;
-  overflow: hidden;
-  pointer-events: none;
-  perspective: 200px;
-  perspective-origin: 50% 0%;
-  -webkit-mask-image: linear-gradient(to top, #000 15%, transparent 100%);
-  mask-image: linear-gradient(to top, #000 15%, transparent 100%);
-}
-
-.neon-grid::before {
-  content: "";
-  position: absolute;
-  inset: 0 -60%;
-  background-image:
-    linear-gradient(to right, rgba(25, 227, 255, 0.55) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 47, 150, 0.55) 1px, transparent 1px);
-  background-size: 54px 54px;
-  transform: rotateX(74deg);
-  transform-origin: 50% 0%;
-  animation: grid-run 3s linear infinite;
-}
-
-@keyframes grid-run {
-  to {
-    background-position: 0 54px;
-  }
-}
-
-.neon-text {
-  text-shadow:
-    0 0 8px rgba(255, 47, 150, 0.6),
-    0 0 26px rgba(255, 47, 150, 0.35),
-    0 0 52px rgba(25, 227, 255, 0.28);
-}
-
-.chrome-text {
-  background: linear-gradient(
-    180deg,
-    #ffffff 6%,
-    #d6dced 30%,
-    #7d88a3 47%,
-    #ffffff 55%,
-    var(--color-sun) 74%,
-    var(--color-magenta) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.scanlines::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 30;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.26) 0 1px,
-    transparent 1px 3px
-  );
-}
-
-.neon-ring {
-  box-shadow:
-    0 0 0 2px var(--color-magenta),
-    0 0 18px rgba(255, 47, 150, 0.55),
-    0 0 38px rgba(25, 227, 255, 0.3);
+.spin-slow {
+  animation: spin-slow 9s linear infinite;
 }
 
 .system-label {

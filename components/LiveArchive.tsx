@@ -14,16 +14,16 @@ function formatDate(show: PastShow) {
 function ShowRow({ show }: { show: PastShow }) {
   const secondary = [formatDate(show), show.title].filter(Boolean).join(" — ");
   return (
-    <li className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-6">
-      <span className="font-display text-3xl leading-none text-paper sm:text-4xl">
+    <li className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b-2 border-dotted border-void/35 px-4 py-5 last:border-b-0 sm:px-6">
+      <span className="font-display text-2xl leading-none text-void sm:text-3xl">
         {show.venue}
         {show.venue && show.city && (
-          <span className="text-paper/80">, {show.city}</span>
+          <span className="text-void/60">, {show.city}</span>
         )}
         {!show.venue && show.city}
       </span>
       {secondary && (
-        <span className="system-label text-xs text-paper/90">{secondary}</span>
+        <span className="system-label text-[11px] text-signal">{secondary}</span>
       )}
     </li>
   );
@@ -34,28 +34,28 @@ export function LiveArchive() {
   return (
     <section
       id="presentaciones"
-      className="scanlines relative overflow-hidden bg-gradient-to-b from-violet via-magenta to-violet px-5 py-20 md:px-8 md:py-28"
+      className="relative overflow-hidden bg-cobalt px-5 py-20 md:px-8 md:py-28"
     >
-      <div aria-hidden className="neon-grid" />
+      <div aria-hidden className="halftone pointer-events-none absolute inset-0 text-void" />
 
       <div className="relative mx-auto max-w-6xl">
-        <SystemText className="mb-4 text-paper/80">SE HA PRESENTADO EN</SystemText>
-        <h2 className="neon-text mb-10 font-display text-[13vw] leading-[0.85] text-paper sm:text-[8vw] md:mb-14 md:text-[5.5vw]">
+        <SystemText className="banner-label mb-5 inline-block text-[10px]">SE HA PRESENTADO EN</SystemText>
+        <h2 className="pop-title-light mb-10 font-display text-[13vw] leading-[0.85] text-paper sm:text-[8vw] md:mb-14 md:text-[5.5vw]">
           SHOW EN VIVO
         </h2>
 
         <HighlightPlayer />
 
-        <ul className="border-y border-paper/30">
+        <ul className="sticker border-2 border-void bg-paper">
           <ShowRow show={featured} />
         </ul>
 
         <details className="group mt-8">
-          <summary className="system-label inline-block cursor-pointer list-none rounded-full border border-paper/70 px-6 py-3 text-xs text-paper transition-colors hover:bg-paper hover:text-violet [&::-webkit-details-marker]:hidden">
+          <summary className="system-label sticker inline-block cursor-pointer list-none rounded-full border-2 border-void bg-cyan px-6 py-3 text-xs text-void transition-transform hover:-translate-y-0.5 [&::-webkit-details-marker]:hidden">
             <span className="group-open:hidden">VER MÁS</span>
             <span className="hidden group-open:inline">VER MENOS</span>
           </summary>
-          <ul className="mt-6 divide-y divide-paper/25 border-y border-paper/30">
+          <ul className="sticker mt-6 border-2 border-void bg-paper">
             {rest.map((show, i) => (
               <ShowRow key={i} show={show} />
             ))}

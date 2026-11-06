@@ -16,20 +16,24 @@ export function SiteHeader() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="flex items-center justify-between bg-gradient-to-b from-void/85 to-transparent px-5 py-4 md:px-8 md:py-5">
-        <a
-          href="#top"
-          className="font-display text-lg tracking-wide text-paper transition-colors hover:text-magenta md:text-xl"
-        >
-          DM
+      <div className="retro-stripes" aria-hidden />
+      <div className="flex items-center justify-between border-b-2 border-void bg-paper px-5 py-3 md:px-8">
+        {/* Channel plate, the way a broadcast ident sat in the corner. */}
+        <a href="#top" className="group flex items-baseline gap-2">
+          <span className="font-display text-lg leading-none tracking-wide text-void transition-colors group-hover:text-signal md:text-xl">
+            DANNI MORENO
+          </span>
+          <span className="system-label hidden text-[9px] text-signal sm:inline">
+            CANAL 07
+          </span>
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-1 md:flex lg:gap-2">
           {NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="system-label text-xs text-paper transition-colors hover:text-magenta"
+              className="system-label rounded-full whitespace-nowrap px-2.5 py-1.5 text-[10px] text-void transition-colors hover:bg-signal hover:text-paper lg:text-[11px]"
             >
               {item.label}
             </a>
@@ -39,7 +43,7 @@ export function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram de Danni Moreno"
-            className="system-label text-xs text-paper transition-colors hover:text-magenta"
+            className="system-label rounded-full border-2 border-void px-3 py-1.5 text-[11px] text-void transition-colors hover:bg-void hover:text-paper"
           >
             IG
           </a>
@@ -50,7 +54,7 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className="system-label text-xs text-paper md:hidden"
+          className="system-label rounded-full border-2 border-void px-3 py-1.5 text-[11px] text-void md:hidden"
         >
           {open ? "CERRAR" : "MENÚ"}
         </button>
@@ -59,14 +63,14 @@ export function SiteHeader() {
       {open && (
         <nav
           id="mobile-nav"
-          className="flex flex-col gap-6 bg-void px-5 pb-8 pt-2 md:hidden"
+          className="flex flex-col gap-5 border-b-2 border-void bg-paper px-5 pb-8 pt-5 md:hidden"
         >
           {NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="font-display text-3xl text-paper"
+              className="font-display text-3xl text-void"
             >
               {item.label}
             </a>

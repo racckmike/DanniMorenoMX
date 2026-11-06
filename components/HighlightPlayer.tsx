@@ -10,7 +10,7 @@ function SlotCaption({ title, dim }: { title: string; dim?: boolean }) {
   return (
     <p
       className={`system-label mt-2.5 text-[10px] leading-relaxed sm:text-[11px] ${
-        dim ? "text-paper/55" : "text-paper"
+        dim ? "text-paper/60" : "text-paper"
       }`}
     >
       {title}
@@ -21,8 +21,8 @@ function SlotCaption({ title, dim }: { title: string; dim?: boolean }) {
 function EmptySlot({ title }: { title: string }) {
   return (
     <div className="w-[190px] shrink-0 sm:w-[260px]">
-      <div className="flex aspect-[9/16] items-center justify-center rounded-sm border-2 border-dashed border-paper/30 bg-void/25 px-3">
-        <span className="system-label text-[10px] text-paper/40">
+      <div className="flex aspect-[9/16] items-center justify-center rounded-[18px] border-2 border-dashed border-paper/60 bg-void/20 px-3">
+        <span className="system-label text-[10px] text-paper/70">
           PRÓXIMAMENTE
         </span>
       </div>
@@ -77,7 +77,7 @@ function Bubble({
     // paint video nested inside a <button>.
     <div className="group w-[190px] shrink-0 sm:w-[260px]">
       <div className="relative">
-      <div className="neon-ring relative aspect-[9/16] overflow-hidden rounded-sm bg-void">
+      <div className="crt-screen relative aspect-[9/16]">
         {highlight.preview ? (
           <video
             ref={previewRef}
@@ -101,7 +101,7 @@ function Bubble({
           />
         ) : null}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-end bg-gradient-to-t from-void/90 to-transparent px-2.5 pb-2.5 pt-10">
-          <span className="system-label flex items-center gap-1 rounded-full bg-magenta px-3 py-2 text-[10px] text-paper transition-transform group-hover:scale-105 sm:text-[11px]">
+          <span className="system-label flex items-center gap-1 rounded-full bg-signal px-3 py-2 text-[10px] text-paper transition-transform group-hover:scale-105 sm:text-[11px]">
             <svg viewBox="0 0 24 24" aria-hidden className="h-3 w-3 fill-current">
               <path d="M8 5v14l11-7z" />
             </svg>

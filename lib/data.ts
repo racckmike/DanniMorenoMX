@@ -19,17 +19,26 @@ export const artist = {
   spotify: "https://open.spotify.com/artist/7jbMO8GaINf90FkmWvzUAN",
   appleMusic: "https://music.apple.com/us/artist/danni-moreno/1433651209",
   facebook: "https://www.facebook.com/DanniMorenoMX/",
+  email: "dannimorenomx@gmail.com",
   city: "Ciudad de México",
   // Exact self-description from the artist's own bio text — do not
   // paraphrase or add roles (e.g. "creadora audiovisual") she hasn't used.
   roles: ["Artista", "Compositora", "Productora musical"],
-  label: "Danni Moreno Music / Warner Music Group",
+  label: "Danni Moreno Music",
   degree: "Licenciada en Producción Musical",
   // Provided directly by the artist's team (see docs/content-sources.md).
   // These are point-in-time figures, not live data — refresh periodically.
+  // From the artist's own 2026 media kit ("Media kit Danni moreno
+  // actualizado", read 2026-11-06). Point-in-time figures — refresh them
+  // when she sends a newer kit, don't extrapolate.
   stats: {
-    streamsOnOneSong: "+1M",
-    monthlyListeners: "+12K",
+    // The media kit printed 7.6M here; the artist corrected it to 74.1K.
+    tiktok: "74.1K",
+    spotifyStreams: "1.5M",
+    instagram: "10.2K",
+    youtube: "3.29K",
+    listenerGrowth: "+634%",
+    streamGrowth: "+533%",
   },
 };
 
@@ -54,7 +63,7 @@ export const cefeida = {
   spotifyUrl: "https://open.spotify.com/album/5tCbUJIL9OSrrKvT4HlB9G",
   cover:
     "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273a77b69c3afab20902a6764b0",
-  credit: "℗ & © 2026 Danni Moreno Music / Warner Music Group",
+  credit: "℗ & © 2026 Danni Moreno Music",
   tracks: [
     {
       index: 1,
@@ -291,7 +300,7 @@ export const pastShows: PastShow[] = [
   {
     title: "Marcha del Orgullo LGBT+",
     venue: "Ángel de la Independencia",
-    city: "Ciudad de México",
+  city: "Ciudad de México",
     date: "2026",
     dateIsYearOnly: true,
   },

@@ -5,20 +5,6 @@ import Image from "next/image";
 import { cefeida } from "@/lib/data";
 import { SystemText, RecDot } from "./SystemText";
 
-const ACCENT_BG: Record<string, string> = {
-  signal: "bg-signal/25",
-  magenta: "bg-magenta/25",
-  cobalt: "bg-cobalt/30",
-  violet: "bg-violet/35",
-};
-
-const ACCENT_TEXT: Record<string, string> = {
-  signal: "text-signal",
-  magenta: "text-magenta",
-  cobalt: "text-cobalt",
-  violet: "text-[#b98bff]",
-};
-
 export function CefeidaSection() {
   const [active, setActive] = useState(0);
   const track = cefeida.tracks[active];
@@ -26,22 +12,15 @@ export function CefeidaSection() {
   return (
     <section
       id="cefeida"
-      className="scanlines relative overflow-hidden bg-cosmic-deep px-5 py-24 md:px-8 md:py-36"
+      className="relative overflow-hidden bg-paper px-5 py-24 md:px-8 md:py-36"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60"
-        style={{
-          backgroundImage:
-            "radial-gradient(ellipse at 80% 0%, var(--color-magenta) 0%, transparent 55%), radial-gradient(ellipse at 0% 100%, var(--color-cobalt) 0%, transparent 55%)",
-        }}
-      />
+      <div aria-hidden className="halftone pointer-events-none absolute inset-0 text-signal" />
 
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-4 md:mb-16">
           <div>
-            <SystemText className="text-signal">{cefeida.type} — {cefeida.year}</SystemText>
-            <h2 className="chrome-text mt-2 font-display text-[16vw] leading-[0.85] text-paper sm:text-[10vw] md:text-[7vw]">
+            <SystemText className="banner-label inline-block text-[10px]">{cefeida.type} — {cefeida.year}</SystemText>
+            <h2 className="pop-title mt-2 font-display text-[16vw] leading-[0.85] text-void sm:text-[10vw] md:text-[7vw]">
               CEFEIDA
             </h2>
           </div>
@@ -49,7 +28,7 @@ export function CefeidaSection() {
             href={cefeida.spotifyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="system-label rounded-full border border-paper/40 px-5 py-2.5 text-xs text-paper transition-colors hover:border-paper"
+            className="system-label sticker rounded-full border-2 border-void bg-cyan px-5 py-2.5 text-xs text-void transition-transform hover:-translate-y-0.5"
           >
             ESCUCHAR EN SPOTIFY ↗
           </a>
@@ -57,7 +36,7 @@ export function CefeidaSection() {
 
         <div className="grid gap-8 md:grid-cols-12 md:gap-12">
           <div className="order-2 md:order-1 md:col-span-7">
-            <ol className="divide-y divide-paper/10 border-y border-paper/10">
+            <ol className="sticker divide-y-2 divide-dotted divide-void/30 border-2 border-void bg-paper">
               {cefeida.tracks.map((t, i) => (
                 <li key={t.title}>
                   <button
@@ -66,10 +45,10 @@ export function CefeidaSection() {
                     onFocus={() => setActive(i)}
                     onClick={() => setActive(i)}
                     className={`group flex w-full items-center gap-4 py-4 text-left transition-colors md:py-5 ${
-                      active === i ? ACCENT_TEXT[t.accent] : "text-paper hover:text-paper/70"
+                      active === i ? "text-signal" : "text-void hover:text-void/60"
                     }`}
                   >
-                    <span className="system-label w-8 shrink-0 text-xs text-paper/40">
+                    <span className="system-label w-8 shrink-0 text-xs text-void/40">
                       {String(t.index).padStart(2, "0")}
                     </span>
                     <span className="font-display flex-1 text-2xl leading-none sm:text-3xl md:text-4xl">
@@ -80,14 +59,14 @@ export function CefeidaSection() {
                         <RecDot />
                       </span>
                     )}
-                    <span className="system-label shrink-0 text-xs text-paper/40">
+                    <span className="system-label shrink-0 text-xs text-void/40">
                       {t.duration}
                     </span>
                   </button>
                 </li>
               ))}
             </ol>
-            <p className="system-label mt-4 text-[11px] text-paper/40">
+            <p className="system-label mt-4 text-[11px] text-void/40">
               {cefeida.totalDuration} TOTAL — {cefeida.credit}
             </p>
           </div>
@@ -98,8 +77,14 @@ export function CefeidaSection() {
                 href={track.spotifyTrackUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative block aspect-square w-full overflow-hidden"
+                className="group relative block aspect-square w-full"
               >
+                {/* the record slipping out of its sleeve */}
+                <span
+                  aria-hidden
+                  className="vinyl spin-slow absolute right-[-14%] top-1/2 h-[82%] w-[82%] -translate-y-1/2"
+                />
+                <span className="sticker relative block h-full w-full overflow-hidden border-2 border-void">
                 <Image
                   key={track.title}
                   src={track.cover}
@@ -108,17 +93,14 @@ export function CefeidaSection() {
                   sizes="(min-width: 768px) 40vw, 90vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div
-                  aria-hidden
-                  className={`absolute inset-0 mix-blend-color ${ACCENT_BG[track.accent]}`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-void/80 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <SystemText className="text-paper">
+                <span className="absolute inset-0 bg-gradient-to-t from-void/75 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                  <SystemText className="text-[10px] text-paper">
                     PISTA {String(track.index).padStart(2, "0")} / 07
                   </SystemText>
-                  <SystemText className="text-paper">{track.duration}</SystemText>
-                </div>
+                  <SystemText className="text-[10px] text-paper">{track.duration}</SystemText>
+                </span>
+                </span>
               </a>
             </div>
           </div>

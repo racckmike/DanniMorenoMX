@@ -6,27 +6,37 @@ export function ArtistBio() {
   return (
     <section
       id="about"
-      className="relative bg-cobalt px-5 py-24 md:px-8 md:py-36"
+      className="relative overflow-hidden bg-magenta px-5 py-24 md:px-8 md:py-36"
     >
-      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-12 md:gap-16">
-        <div className="relative aspect-[4/5] w-full overflow-hidden md:col-span-5">
-          <Image
-            src="/photos/archive-studio-01.jpg"
-            alt="Danni Moreno"
-            fill
-            sizes="(min-width: 768px) 40vw, 90vw"
-            className="object-cover"
-            style={{ objectPosition: "71% 42%" }}
-          />
+      <div aria-hidden className="halftone pointer-events-none absolute inset-0 text-void" />
+
+      <div className="relative mx-auto grid max-w-6xl gap-10 md:grid-cols-12 md:gap-16">
+        {/* pinned like a photo in a magazine spread */}
+        <div className="md:col-span-5">
+          <div className="polaroid -rotate-2 transition-transform duration-500 hover:rotate-0">
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-plum">
+              <Image
+                src="/photos/archive-studio-01.jpg"
+                alt="Danni Moreno"
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover"
+                style={{ objectPosition: "71% 42%" }}
+              />
+            </div>
+            <p className="system-label mt-4 text-center text-[10px] text-void/60">
+              DANNI MORENO — {artist.city.toUpperCase()}
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-col justify-center md:col-span-7">
-          <SystemText className="mb-4 text-paper/70">SOBRE DANNI</SystemText>
-          <h2 className="font-display mb-6 text-[10vw] leading-[0.88] text-paper sm:text-[6vw] md:text-[4vw]">
+          <SystemText className="banner-label mb-5 inline-block text-[10px]">SOBRE DANNI</SystemText>
+          <h2 className="pop-title font-display mb-6 text-[10vw] leading-[0.88] text-void sm:text-[6vw] md:text-[4vw]">
             DANNI MORENO
           </h2>
 
-          <div className="flex max-w-xl flex-col gap-5 text-balance text-base leading-relaxed text-paper/90 md:text-lg">
+          <div className="flex max-w-xl flex-col gap-5 text-balance text-base leading-relaxed text-void/80 md:text-lg">
             <p>
               Danni Moreno es artista, compositora y productora musical de{" "}
               {artist.city}, {artist.degree.toLowerCase()}. Su proyecto se
@@ -56,8 +66,8 @@ export function ArtistBio() {
             </p>
             <p>
               Actualmente se encuentra en una nueva etapa artística, con
-              canciones como <em className="not-italic text-paper">Yorokobi</em>{" "}
-              y <em className="not-italic text-paper">Pecar</em> como parte de
+              canciones como <em className="not-italic text-void">Yorokobi</em>{" "}
+              y <em className="not-italic text-void">Pecar</em> como parte de
               esta evolución. Próximamente continuará lanzando música que
               explora distintas sonoridades dentro del pop, desde lo
               electrónico y disco hasta influencias que recorren distintas
@@ -75,26 +85,30 @@ export function ArtistBio() {
             </p>
           </div>
 
-          <dl className="system-label mt-10 grid grid-cols-2 gap-6 text-xs text-paper/70 sm:grid-cols-3">
+          <dl className="system-label mt-10 grid grid-cols-2 gap-6 text-xs text-void/70 sm:grid-cols-3">
             <div>
-              <dt className="text-paper/60">ROL</dt>
-              <dd className="mt-1 text-paper">{artist.roles.join(", ").toUpperCase()}</dd>
+              <dt className="text-void/50">ROL</dt>
+              <dd className="mt-1 text-void">{artist.roles.join(", ").toUpperCase()}</dd>
             </div>
             <div>
-              <dt className="text-paper/60">BASE</dt>
-              <dd className="mt-1 text-paper">{artist.city.toUpperCase()}</dd>
+              <dt className="text-void/50">BASE</dt>
+              <dd className="mt-1 text-void">{artist.city.toUpperCase()}</dd>
             </div>
             <div>
-              <dt className="text-paper/60">SELLO</dt>
-              <dd className="mt-1 text-paper">WARNER MUSIC GROUP</dd>
+              <dt className="text-void/50">TIKTOK</dt>
+              <dd className="mt-1 text-void">{artist.stats.tiktok}</dd>
             </div>
             <div>
-              <dt className="text-paper/60">REPRODUCCIONES</dt>
-              <dd className="mt-1 text-paper">{artist.stats.streamsOnOneSong} EN UNA CANCIÓN</dd>
+              <dt className="text-void/50">SPOTIFY</dt>
+              <dd className="mt-1 text-void">{artist.stats.spotifyStreams} REPRODUCCIONES</dd>
             </div>
             <div>
-              <dt className="text-paper/60">OYENTES</dt>
-              <dd className="mt-1 text-paper">{artist.stats.monthlyListeners} MENSUALES · SPOTIFY</dd>
+              <dt className="text-void/50">INSTAGRAM</dt>
+              <dd className="mt-1 text-void">{artist.stats.instagram}</dd>
+            </div>
+            <div>
+              <dt className="text-void/50">YOUTUBE</dt>
+              <dd className="mt-1 text-void">{artist.stats.youtube}</dd>
             </div>
           </dl>
         </div>

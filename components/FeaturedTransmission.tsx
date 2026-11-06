@@ -10,47 +10,60 @@ export function FeaturedTransmission() {
   const video = videos.pecar;
 
   return (
-    <section className="relative flex min-h-[72svh] w-full items-center justify-center overflow-hidden bg-magenta">
-      {!playing ? (
-        <button
-          type="button"
-          onClick={() => setPlaying(true)}
-          className="group absolute inset-0 h-full w-full"
-          aria-label={`Reproducir ${video.title}`}
-        >
-          <Image
-            src={youtubeThumb(video.youtubeId)}
-            alt={video.title}
-            fill
-            sizes="100vw"
-            className="object-cover opacity-90 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-100"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-void via-magenta/30 to-void/40" />
+    <section className="relative w-full overflow-hidden bg-plum px-5 py-20 md:px-8 md:py-28">
+      <div aria-hidden className="halftone pointer-events-none absolute inset-0 text-paper" />
 
-          <div className="relative z-10 flex h-full flex-col items-start justify-end px-5 pb-16 md:px-12 md:pb-24">
-            <RecDot className="mb-4" />
-            <SystemText className="mb-2 text-paper/80">
-              TRANSMISIÓN DESTACADA
-            </SystemText>
-            <h2 className="font-display text-[20vw] leading-[0.82] text-paper sm:text-[13vw] md:text-[10vw]">
-              PECAR
-            </h2>
-            <span className="system-label mt-6 flex items-center gap-3 rounded-full border border-paper/70 px-6 py-3 text-xs text-paper">
-              REPRODUCIR {"▶"}
-            </span>
+      <div className="relative mx-auto max-w-4xl">
+        <SystemText className="banner-label mb-5 inline-block text-[10px]">
+          TRANSMISIÓN DESTACADA
+        </SystemText>
+        <h2 className="pop-title-light mb-8 font-display text-[18vw] leading-[0.82] text-paper sm:text-[12vw] md:mb-10 md:text-[6vw]">
+          PECAR
+        </h2>
+
+        {/* A real television set: the video plays inside the screen. */}
+        <div className="crt-frame">
+          <div className="crt-screen aspect-video">
+            {!playing ? (
+              <button
+                type="button"
+                onClick={() => setPlaying(true)}
+                className="group absolute inset-0 h-full w-full"
+                aria-label={`Reproducir ${video.title}`}
+              >
+                <Image
+                  src={youtubeThumb(video.youtubeId)}
+                  alt={video.title}
+                  fill
+                  sizes="(min-width: 768px) 60vw, 100vw"
+                  className="object-cover opacity-90 transition-opacity duration-500 group-hover:opacity-100"
+                />
+                <span className="system-label sticker absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full border-2 border-void bg-signal px-5 py-2.5 text-[11px] text-paper transition-transform group-hover:-translate-y-0.5 group-hover:-translate-x-1/2">
+                  REPRODUCIR {"\u25B6"}
+                </span>
+              </button>
+            ) : (
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
+                title={video.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
           </div>
-        </button>
-      ) : (
-        <div className="relative aspect-video w-full">
-          <iframe
-            className="absolute inset-0 h-full w-full"
-            src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
-            title={video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+
+          {/* bezel furniture */}
+          <div className="absolute bottom-3 left-6 flex items-center gap-2">
+            <RecDot />
+            <SystemText className="text-[9px] text-void/70">CANAL 07</SystemText>
+          </div>
+          <div className="absolute bottom-3 right-6 flex items-center gap-2" aria-hidden>
+            <span className="crt-knob" />
+            <span className="crt-knob" />
+          </div>
         </div>
-      )}
+      </div>
     </section>
   );
 }

@@ -11,27 +11,27 @@ const ROW_HOVER = ["hover:bg-signal/10", "hover:bg-magenta/10", "hover:bg-cobalt
 
 export function MusicArchive() {
   return (
-    <section className="relative overflow-hidden bg-void px-5 py-24 md:px-8 md:py-36">
+    <section className="relative overflow-hidden bg-paper px-5 py-24 md:px-8 md:py-36">
       <div aria-hidden className="neon-grid" />
 
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-10 flex items-end justify-between md:mb-14">
-          <h2 className="neon-text font-display text-[13vw] leading-[0.85] text-paper sm:text-[8vw] md:text-[5.5vw]">
+          <h2 className="pop-title font-display text-[13vw] leading-[0.85] text-void sm:text-[8vw] md:text-[5.5vw]">
             CATÁLOGO
           </h2>
-          <SystemText className="hidden text-paper/40 sm:block">
+          <SystemText className="banner-label hidden text-[10px] sm:inline-block">
             ARCHIVO DM — GUÍA DE PROGRAMACIÓN
           </SystemText>
         </div>
 
-        <div className="system-label mb-3 hidden grid-cols-[5rem_1fr_5rem_4rem] gap-4 px-3 text-[10px] text-paper/40 md:grid">
+        <div className="system-label mb-3 hidden grid-cols-[5rem_1fr_5rem_4rem] gap-4 px-3 text-[10px] text-void/40 md:grid">
           <span>CAT.</span>
           <span>TÍTULO</span>
           <span>TIPO</span>
           <span className="text-right">AÑO</span>
         </div>
 
-        <ul className="divide-y divide-paper/10 border-y border-paper/10">
+        <ul className="divide-y divide-void/20 border-y-2 border-void">
           {catalog.map((release, i) => (
             <li key={release.catNo}>
               <a
@@ -40,12 +40,12 @@ export function MusicArchive() {
                 rel="noopener noreferrer"
                 className={`group grid grid-cols-[3.5rem_1fr_auto] items-center gap-4 px-3 py-4 transition-colors md:grid-cols-[5rem_1fr_5rem_4rem] md:py-5 ${ROW_HOVER[i % ROW_HOVER.length]}`}
               >
-                <span className="system-label text-xs text-paper/40">
+                <span className="system-label text-xs text-void/40">
                   {release.catNo}
                 </span>
 
                 <span className="flex items-center gap-4 overflow-hidden">
-                  <span className="relative h-11 w-11 shrink-0 overflow-hidden bg-cosmic-deep md:h-14 md:w-14">
+                  <span className="relative h-12 w-12 shrink-0 overflow-hidden border-2 border-void bg-plum md:h-16 md:w-16">
                     <Image
                       src={release.cover}
                       alt={`${release.title} — Danni Moreno`}
@@ -54,16 +54,16 @@ export function MusicArchive() {
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                   </span>
-                  <span className="font-display truncate text-xl leading-none text-paper sm:text-2xl md:text-3xl">
+                  <span className="font-display truncate text-xl leading-none text-void sm:text-2xl md:text-3xl">
                     {release.title}
                   </span>
                 </span>
 
-                <span className="system-label hidden text-xs text-paper/40 md:block">
+                <span className="system-label hidden text-xs text-void/40 md:block">
                   {TYPE_LABEL[release.type] ?? release.type}
                 </span>
 
-                <span className="system-label whitespace-nowrap text-right text-xs text-paper/40">
+                <span className="system-label whitespace-nowrap text-right text-xs text-void/40">
                   {release.year}
                 </span>
               </a>

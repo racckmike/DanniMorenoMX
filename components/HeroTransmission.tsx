@@ -43,7 +43,7 @@ export function HeroTransmission() {
   return (
     <section
       id="top"
-      className="scanlines relative flex h-[100svh] min-h-[560px] w-full items-end overflow-hidden bg-cosmic-deep"
+      className="scanlines relative flex h-[100svh] min-h-[560px] w-full items-end overflow-hidden bg-magenta"
     >
       {/*
         The parallax transform lives on the <img> itself, not on a wrapping
@@ -70,24 +70,26 @@ export function HeroTransmission() {
                 }
           }
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/25 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-br from-magenta/15 via-transparent to-cobalt/20" />
+        <div className="absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-paper via-paper/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-magenta/25 via-transparent to-cobalt/25" />
       </div>
 
       {/* perspective grid, behind the name */}
-      <div aria-hidden className="neon-grid z-[5]" />
+      {/* printed decoration: halftone wash and a checkerboard corner */}
+      <div aria-hidden className="halftone pointer-events-none absolute inset-0 z-[4] text-void" />
+      <div aria-hidden className="checker pointer-events-none absolute bottom-0 right-0 z-[4] h-16 w-28 text-void/15" />
 
       {glitchTop !== null && (
         <div
           aria-hidden
-          className="absolute inset-x-0 z-20 h-4 bg-paper/80"
+          className="absolute inset-x-0 z-20 h-4 bg-paper/90"
           style={{ top: `${glitchTop}%` }}
         />
       )}
 
       {/* atmospheric texture — small, muted, clearly secondary to the name below */}
       <div
-        className="system-label pointer-events-none absolute left-5 top-20 flex items-center gap-2 text-[10px] text-paper/45 md:left-8 md:top-24"
+        className="system-label pointer-events-none absolute left-5 top-20 flex items-center gap-2 text-[10px] text-void md:left-8 md:top-24"
         style={{ opacity: fade }}
       >
         <RecDot label="GRABANDO SU PRÓXIMO LANZAMIENTO" />
@@ -101,30 +103,30 @@ export function HeroTransmission() {
       >
         <h1
           data-text="DANNI MORENO"
-          className="text-aberrate font-display leading-[0.8] text-paper"
+          className="text-aberrate font-display leading-[0.8] text-void"
         >
           <span className="block text-[19vw] md:text-[15vw] lg:text-[13vw]">
             DANNI
           </span>
-          <span className="neon-text block text-[19vw] text-signal md:text-[15vw] lg:text-[13vw]">
+          <span className="pop-title block text-[19vw] text-signal md:text-[15vw] lg:text-[13vw]">
             MORENO
           </span>
         </h1>
 
-        <p className="mt-4 max-w-xl text-balance font-info text-lg font-medium text-paper md:mt-5 md:text-2xl">
+        <p className="mt-4 max-w-xl text-balance font-info text-lg font-medium text-void md:mt-5 md:text-2xl">
           {artist.roles.join(" · ")} de {artist.city}.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
           <a
             href="#cefeida"
-            className="system-label rounded-full bg-magenta px-6 py-3 text-xs text-paper transition-transform hover:scale-105"
+            className="system-label inline-flex items-center gap-2 rounded-full border-2 border-void bg-signal px-6 py-3 text-xs text-paper transition-transform hover:-translate-y-0.5 sticker"
           >
             ESCUCHAR
           </a>
           <a
             href="#presentaciones"
-            className="system-label rounded-full border border-cyan px-6 py-3 text-xs text-paper transition-colors hover:bg-cyan hover:text-void"
+            className="system-label inline-flex items-center gap-2 rounded-full border-2 border-void bg-cyan px-6 py-3 text-xs text-void transition-transform hover:-translate-y-0.5 sticker"
           >
             VER SHOW EN VIVO
           </a>
