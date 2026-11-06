@@ -1,54 +1,23 @@
-import { catalog, cefeida } from "@/lib/data";
 import { MediaFrame } from "./MediaFrame";
 import { SystemText } from "./SystemText";
 
-const vaALlegar = catalog.find((r) => r.title === "Va a Llegar")!;
-const bailemos = catalog.find((r) => r.title === "Bailemos")!;
-const signos = catalog.find((r) => r.title === "Signos")!;
-const elAmorEsReal = cefeida.tracks[4];
-const yorokobi = cefeida.tracks[5];
-
-// Frame 1 is real studio photography, sourced directly from the
-// artist's team (see docs/content-sources.md). Everything else is verified
-// Spotify cover art from her own artist page — no video auto-thumbnails.
+// Photographs the artist selected herself for this archive (Drive folder
+// "Destacados", 2026-11-06) plus the pink-bathroom frame she asked to keep.
+// Originals are 2400x3600 — no Spotify cover art here, these are photos only.
 const frames = [
   {
     src: "/photos/archive-bathroom-01.jpg",
-    alt: "Danni Moreno — fotografía de estudio, 2026",
-    label: "ROLLO 03 — CAMPAÑA 2026",
     span: "md:col-span-7 md:row-span-2 aspect-[3/4] md:aspect-auto",
     objectPosition: "50% 15%",
+    tilt: "-rotate-1",
   },
-  {
-    src: elAmorEsReal.cover,
-    alt: "El amor es real? — arte oficial, Danni Moreno",
-    label: "ROLLO 02 — EL AMOR ES REAL?",
-    span: "md:col-span-5 aspect-square",
-  },
-  {
-    src: vaALlegar.cover,
-    alt: "Va a Llegar — arte oficial, Danni Moreno",
-    label: "FOTOGRAMA 17 — VA A LLEGAR",
-    span: "md:col-span-5 aspect-square",
-  },
-  {
-    src: yorokobi.cover,
-    alt: "Yorokobi (喜び) — arte oficial, Danni Moreno",
-    label: "CEFEIDA — YOROKOBI",
-    span: "md:col-span-4 aspect-square",
-  },
-  {
-    src: bailemos.cover,
-    alt: "Bailemos — arte oficial, Danni Moreno",
-    label: "35MM — BAILEMOS",
-    span: "md:col-span-4 aspect-square",
-  },
-  {
-    src: signos.cover,
-    alt: "Signos — arte oficial, Danni Moreno",
-    label: "ARCHIVO DM — SIGNOS",
-    span: "md:col-span-4 aspect-square",
-  },
+  { src: "/photos/archive-5181.jpg", span: "md:col-span-5 aspect-[3/4]", tilt: "rotate-1" },
+  { src: "/photos/archive-5180.jpg", span: "md:col-span-5 aspect-[3/4]", tilt: "-rotate-1" },
+  { src: "/photos/archive-5179.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
+  { src: "/photos/archive-5178.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "-rotate-1" },
+  { src: "/photos/archive-3642.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
+  { src: "/photos/archive-3596.jpg", span: "md:col-span-6 aspect-[3/4]", tilt: "-rotate-1" },
+  { src: "/photos/archive-0273.jpg", span: "md:col-span-6 aspect-[3/4]", tilt: "rotate-1" },
 ];
 
 export function VisualArchive() {
@@ -70,12 +39,12 @@ export function VisualArchive() {
         </div>
 
         <div className="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-4">
-          {frames.map((f, i) => (
+          {frames.map((f) => (
             <MediaFrame
-              key={`${f.label}-${i}`}
+              key={f.src}
               src={f.src}
-              alt={f.alt}
-              className={f.span}
+              alt="Danni Moreno"
+              className={`${f.span} ${f.tilt} transition-transform duration-500 hover:rotate-0`}
               objectPosition={f.objectPosition}
             />
           ))}
