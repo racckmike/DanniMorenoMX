@@ -9,7 +9,7 @@ const PHOTO_MS = 5000;
 function SlotCaption({ title, dim }: { title: string; dim?: boolean }) {
   return (
     <p
-      className={`system-label mt-2.5 text-[9px] leading-relaxed sm:text-[10px] ${
+      className={`system-label mt-2.5 text-[10px] leading-relaxed sm:text-[11px] ${
         dim ? "text-paper/55" : "text-paper"
       }`}
     >
@@ -20,9 +20,9 @@ function SlotCaption({ title, dim }: { title: string; dim?: boolean }) {
 
 function EmptySlot({ title }: { title: string }) {
   return (
-    <div className="w-[150px] shrink-0 sm:w-[200px]">
+    <div className="w-[190px] shrink-0 sm:w-[260px]">
       <div className="flex aspect-[9/16] items-center justify-center rounded-sm border-2 border-dashed border-paper/30 bg-void/25 px-3">
-        <span className="system-label text-[9px] text-paper/40">
+        <span className="system-label text-[10px] text-paper/40">
           PRÓXIMAMENTE
         </span>
       </div>
@@ -75,7 +75,7 @@ function Bubble({
   return (
     // The media is a sibling of the button, never a child: Safari does not
     // paint video nested inside a <button>.
-    <div className="group w-[150px] shrink-0 sm:w-[200px]">
+    <div className="group w-[190px] shrink-0 sm:w-[260px]">
       <div className="relative">
       <div className="neon-ring relative aspect-[9/16] overflow-hidden rounded-sm bg-void">
         {highlight.preview ? (
@@ -96,12 +96,12 @@ function Bubble({
             src={highlight.cover}
             alt=""
             fill
-            sizes="200px"
+            sizes="260px"
             className="object-cover"
           />
         ) : null}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-end bg-gradient-to-t from-void/90 to-transparent px-2.5 pb-2.5 pt-10">
-          <span className="system-label flex items-center gap-1 rounded-full bg-magenta px-2.5 py-1.5 text-[9px] text-paper transition-transform group-hover:scale-105 sm:text-[10px]">
+          <span className="system-label flex items-center gap-1 rounded-full bg-magenta px-3 py-2 text-[10px] text-paper transition-transform group-hover:scale-105 sm:text-[11px]">
             <svg viewBox="0 0 24 24" aria-hidden className="h-3 w-3 fill-current">
               <path d="M8 5v14l11-7z" />
             </svg>
