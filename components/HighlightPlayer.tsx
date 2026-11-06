@@ -20,7 +20,7 @@ function SlotCaption({ title, dim }: { title: string; dim?: boolean }) {
 
 function EmptySlot({ title }: { title: string }) {
   return (
-    <div className="w-[190px] shrink-0 sm:w-[260px]">
+    <div className="w-full">
       <div className="flex aspect-[9/16] items-center justify-center rounded-[18px] border-2 border-dashed border-paper/60 bg-void/20 px-3">
         <span className="system-label text-[10px] text-paper/70">
           PRÓXIMAMENTE
@@ -75,7 +75,7 @@ function Bubble({
   return (
     // The media is a sibling of the button, never a child: Safari does not
     // paint video nested inside a <button>.
-    <div className="group w-[190px] shrink-0 sm:w-[260px]">
+    <div className="group w-full">
       <div className="relative">
       <div className="crt-screen relative aspect-[9/16]">
         {highlight.preview ? (
@@ -96,7 +96,7 @@ function Bubble({
             src={highlight.cover}
             alt=""
             fill
-            sizes="260px"
+            sizes="(min-width: 1024px) 22vw, 45vw"
             className="object-cover"
           />
         ) : null}
@@ -165,7 +165,7 @@ export function HighlightPlayer() {
 
   return (
     <>
-      <div className="mb-10 flex gap-4 overflow-x-auto pb-1">
+      <div className="mb-10 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
         {liveHighlights.map((h) =>
           h.media.length === 0 ? (
             <EmptySlot key={h.id} title={h.title} />

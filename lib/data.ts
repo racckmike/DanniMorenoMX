@@ -270,17 +270,27 @@ export const liveHighlights: Highlight[] = [
     ],
   },
   {
-    id: "concierto-2025",
-    title: "Concierto 2025 · Sold out",
-    media: [],
+    id: "concierto-2026",
+    title: "Concierto 2026 · Sold out",
+    cover: "/photos/concierto2026-poster.jpg",
+    preview: "/videos/concierto2026-prev.mp4",
+    media: [{ type: "video", src: "/videos/concierto2026-full.mp4" }],
   },
   {
-    id: "foro-tejedor-2025",
-    title: "Foro del Tejedor · 2025",
-    media: [],
+    id: "foro-tejedor",
+    title: "Foro del Tejedor · 2024/2025",
+    cover: "/photos/foro-poster.jpg",
+    preview: "/videos/foro-prev.mp4",
+    media: [{ type: "video", src: "/videos/foro-full.mp4" }],
+  },
+  {
+    id: "show-extra",
+    title: "Más shows",
+    cover: "/photos/showextra-poster.jpg",
+    preview: "/videos/showextra-prev.mp4",
+    media: [{ type: "video", src: "/videos/showextra-full.mp4" }],
   },
 ];
-
 
 export type PastShow = {
   title?: string;
