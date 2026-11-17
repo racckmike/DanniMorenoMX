@@ -17,7 +17,7 @@ const frames = [
   { src: "/photos/archive-5180.jpg", span: "md:col-span-5 aspect-[3/4]", tilt: "-rotate-1" },
   { src: "/photos/archive-3643.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
   { src: "/photos/archive-dsc02646.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "-rotate-1" },
-  { src: "/photos/archive-0273.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
+  { src: "/photos/archive-sala.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
 ];
 
 export function VisualArchive() {
