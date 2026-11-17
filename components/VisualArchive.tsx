@@ -4,6 +4,8 @@ import { SystemText } from "./SystemText";
 // Photographs the artist selected herself for this archive (Drive folder
 // "Destacados", 2026-11-06) plus the pink-bathroom frame she asked to keep.
 // Originals are 2400x3600 — no Spotify cover art here, these are photos only.
+// One frame per look — she asked not to see the same outfit twice, and the
+// studio set (IMG_5178/5179/3596/3642) was five takes of one outfit.
 const frames = [
   {
     src: "/photos/archive-bathroom-01.jpg",
@@ -13,13 +15,9 @@ const frames = [
   },
   { src: "/photos/archive-5181.jpg", span: "md:col-span-5 aspect-[3/4]", tilt: "rotate-1" },
   { src: "/photos/archive-5180.jpg", span: "md:col-span-5 aspect-[3/4]", tilt: "-rotate-1" },
-  { src: "/photos/archive-5179.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
-  { src: "/photos/archive-5178.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "-rotate-1" },
   { src: "/photos/archive-3643.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
-  { src: "/photos/archive-3642.jpg", span: "md:col-span-6 aspect-[3/4]", tilt: "-rotate-1" },
-  { src: "/photos/archive-3596.jpg", span: "md:col-span-6 aspect-[3/4]", tilt: "rotate-1" },
-  { src: "/photos/archive-dsc02646.jpg", span: "md:col-span-6 aspect-[4/3]", tilt: "-rotate-1" },
-  { src: "/photos/archive-0273.jpg", span: "md:col-span-6 aspect-[3/4]", tilt: "rotate-1" },
+  { src: "/photos/archive-dsc02646.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "-rotate-1" },
+  { src: "/photos/archive-0273.jpg", span: "md:col-span-4 aspect-[3/4]", tilt: "rotate-1" },
 ];
 
 export function VisualArchive() {
