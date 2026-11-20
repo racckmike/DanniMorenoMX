@@ -87,9 +87,10 @@ export function HeroTransmission() {
         />
       )}
 
-      {/* atmospheric texture — small, muted, clearly secondary to the name below */}
+      {/* On its own plate: as ink on the photograph it was unreadable wherever
+          the picture went dark. */}
       <div
-        className="system-label pointer-events-none absolute left-5 top-20 flex items-center gap-2 text-[10px] text-void md:left-8 md:top-24"
+        className="system-label pointer-events-none absolute left-5 top-20 flex items-center gap-2 rounded-full border-2 border-void bg-paper px-3 py-1.5 text-[10px] text-void md:left-8 md:top-24"
         style={{ opacity: fade }}
       >
         <RecDot label="GRABANDO SU PRÓXIMO LANZAMIENTO" />
