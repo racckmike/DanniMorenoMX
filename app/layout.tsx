@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Inter, Space_Mono } from "next/font/google";
 import "./globals.css";
-import { BroadcastBoot } from "@/components/BroadcastBoot";
 import { SiteHeader } from "@/components/SiteHeader";
 
 const anton = Anton({
@@ -47,8 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       className={`${anton.variable} ${inter.variable} ${spaceMono.variable} h-full`}
     >
-      <body className="grain min-h-full bg-void text-paper antialiased">
-        <BroadcastBoot />
+      <body className="grain min-h-full bg-paper text-void antialiased">
         <SiteHeader />
         {children}
       </body>
